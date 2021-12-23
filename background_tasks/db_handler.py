@@ -20,15 +20,16 @@ class DBHandler:
 
     def mainloop(self):
         while self.is_running:
-            gyro_data = self.sensors_handler.get_gyro_data()
-            gyro = Gyro(timestamp=processes_utils.generate_timestamp(), x_value=gyro_data[0], y_value=gyro_data[1],
-                        z_value=gyro_data[2])
-
-            with self.app.app_context():
-                print("Update...")
-
-                self.database.session.add(gyro)
-
-                self.database.session.commit()
+            self.update_gyro_data()
 
             time.sleep(1)
+
+    def update_gyro_data(self):
+        gyro_data = self.sensors_handler.get_gyro_data()
+        gyro = Gyro(timestamp=processes_utils.generate_timestamp(), x_value=gyro_data[0], y_value=gyro_data[1],
+                    z_value=gyro_data[2])
+
+        with self.app.app_context():
+            self.database.session.add(gyro)
+
+            self.database.session.commit()

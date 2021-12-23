@@ -18,7 +18,6 @@ class SensorHandler:
     def mainloop(self):
         while self.is_running:
             self.gyro_sensor.update()
-            #print(self.get_gyro_data())
 
             time.sleep(0.5)
 
