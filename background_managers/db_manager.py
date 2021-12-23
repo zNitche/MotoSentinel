@@ -4,7 +4,7 @@ from models import Gyro
 from utils import processes_utils
 
 
-class DBHandler:
+class DBManager:
     def __init__(self, app, db, sensors_handler):
         self.app = app
         self.database = db

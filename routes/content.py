@@ -6,8 +6,8 @@ content_ = Blueprint("content", __name__, template_folder='template', static_fol
 
 @content_.route("/")
 def home():
-    from app import sensors_handler
+    from app import sensors_manager
 
-    print(sensors_handler.get_gyro_data())
+    print(sensors_manager.get_gyro_data())
 
     return render_template("index.html")

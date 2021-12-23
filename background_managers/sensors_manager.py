@@ -3,7 +3,7 @@ import time
 from sensors.gyro import Gyro
 
 
-class SensorHandler:
+class SensorManager:
     def __init__(self):
         self.is_running = False
         self.process = threading.Thread(target=self.mainloop)

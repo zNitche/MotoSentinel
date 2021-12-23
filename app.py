@@ -1,15 +1,15 @@
 from __init__ import create_app, db
-from background_tasks.sensors_handler import SensorHandler
-from background_tasks.db_handler import DBHandler
+from background_managers.sensors_manager import SensorManager
+from background_managers.db_manager import DBManager
 
 
 app = create_app()
 
-sensors_handler = SensorHandler()
-db_handler = DBHandler(app, db, sensors_handler)
+sensors_manager = SensorManager()
+db_manager = DBManager(app, db, sensors_manager)
 
-sensors_handler.start()
-db_handler.start()
+sensors_manager.start()
+db_manager.start()
 
 if __name__ == "__main__":
     APP_PORT = app.config["APP_PORT"]
