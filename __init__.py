@@ -1,11 +1,9 @@
 from flask import Flask
 import os
 from flask_sqlalchemy import SQLAlchemy
-from background_tasks.sensors_handler import SensorHandler
 
 
 db = SQLAlchemy()
-sensors_handler = SensorHandler()
 
 
 def create_app():
@@ -14,7 +12,6 @@ def create_app():
     app.secret_key = os.urandom(25)
 
     db.init_app(app)
-    sensors_handler.start()
 
     with app.app_context():
         db.create_all()
