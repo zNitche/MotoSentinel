@@ -1,6 +1,7 @@
 import threading
 import time
 from sensors.gyro import Gyro
+from background_managers.config import ManagersConfig
 
 
 class SensorManager:
@@ -19,7 +20,7 @@ class SensorManager:
         while self.is_running:
             self.gyro_sensor.update()
 
-            time.sleep(0.5)
+            time.sleep(ManagersConfig.SENSORS_MANAGER_UPDATE_RATE)
 
     def get_gyro_data(self):
         return self.gyro_sensor.get_sensor_values()

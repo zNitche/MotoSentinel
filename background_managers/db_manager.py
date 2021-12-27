@@ -2,6 +2,7 @@ import multiprocessing
 import time
 from models import Gyro
 from utils import processes_utils
+from background_managers.config import ManagersConfig
 
 
 class DBManager:
@@ -22,7 +23,7 @@ class DBManager:
         while self.is_running:
             self.update_gyro_data()
 
-            time.sleep(1)
+            time.sleep(ManagersConfig.DB_MANAGER_UPDATE_RATE)
 
     def update_gyro_data(self):
         gyro_data = self.sensors_handler.get_gyro_data()
