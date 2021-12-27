@@ -9,8 +9,30 @@
     </head>
     <body>
         <div class="container">
-            {% block content %}
-            {% endblock %}
+            <div class="navbar">
+                <span class="navbar-home-item">
+                    <a href="">
+                        MotoSentinel
+                    </a>
+                </span>
+                <span class="navbar-item">
+                    <a href="">
+                        Graphs
+                    </a>
+                </span>
+                <span class="navbar-item">
+                    <a href="">
+                        Settings
+                    </a>
+                </span>
+            </div>
+            <div class="content">
+                {% block content %}
+                {% endblock %}
+            </div>
+            <div class="footer">
+                Powered by Flask
+            </div>
         </div>
     </body>
 </html>
