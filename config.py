@@ -9,3 +9,6 @@ class Config:
 
     SQLALCHEMY_DATABASE_URI = "sqlite:///database.db"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+    DO_LOGS = True
+    LOGS_PATH = os.path.join(CURRENT_DIR, "log.txt")
