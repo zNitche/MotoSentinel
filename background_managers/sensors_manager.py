@@ -1,7 +1,7 @@
 import threading
 import time
 from sensors.gyro import Gyro
-from background_managers.config import ManagersConfig
+from background_managers.managers_config import ManagersConfig
 
 
 class SensorManager:

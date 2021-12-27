@@ -1,7 +1,7 @@
 import os
 
 
-class Config:
+class AppConfig:
     CURRENT_DIR = os.path.dirname(os.path.realpath(__file__))
     APP_PORT = 8080
     APP_HOST = "0.0.0.0"

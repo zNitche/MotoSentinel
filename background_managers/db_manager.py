@@ -2,7 +2,7 @@ import multiprocessing
 import time
 from models import Gyro
 from utils import processes_utils
-from background_managers.config import ManagersConfig
+from background_managers.managers_config import ManagersConfig
 
 
 class DBManager:
