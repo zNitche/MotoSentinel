@@ -11,6 +11,8 @@ class SensorManager:
 
         self.gyro_sensor = Gyro()
 
+        self.sensors = [self.gyro_sensor]
+
     def start(self):
         if not self.is_running:
             self.is_running = True
@@ -24,3 +26,6 @@ class SensorManager:
 
     def get_gyro_data(self):
         return self.gyro_sensor.get_sensor_values()
+
+    def get_sensors(self):
+        return self.sensors

@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
-    <p>
-        Home
-    </p>
+        {% for sensor_data in sensors_data %}
+            <div class="sensor-container">
+                {% for data in sensor_data %}
+                    <p>
+                        {{ data }} : {{ sensor_data[data] }}
+                    </p>
+                {% endfor %}
+            </div>
+        {% endfor %}
 {% endblock %}

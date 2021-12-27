@@ -4,6 +4,7 @@ import random
 class Gyro:
     def __init__(self):
         self.sensor = None
+        self.name = "Gyro"
 
         self.x_value = 0
         self.y_value = 0
@@ -20,3 +21,13 @@ class Gyro:
         values = [self.x_value, self.y_value, self.z_value]
 
         return values
+
+    def parse_sensors_data(self):
+        parsed_values = {
+            "sensor_name": self.name,
+            "x": self.x_value,
+            "y": self.y_value,
+            "z": self.z_value
+        }
+
+        return parsed_values

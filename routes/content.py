@@ -1,5 +1,4 @@
 from flask import render_template, Blueprint
-from utils import logs_utils
 
 
 content_ = Blueprint("content", __name__, template_folder='template', static_folder='static')
@@ -9,7 +8,6 @@ content_ = Blueprint("content", __name__, template_folder='template', static_fol
 def home():
     from app import sensors_manager
 
-    print(sensors_manager.get_gyro_data())
-    logs_utils.log(sensors_manager.get_gyro_data())
+    sensors_data = [sensor.parse_sensors_data() for sensor in sensors_manager.get_sensors()]
 
-    return render_template("index.html")
+    return render_template("index.html", sensors_data=sensors_data)

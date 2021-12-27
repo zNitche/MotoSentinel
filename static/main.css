@@ -35,6 +35,15 @@ body {
     margin-bottom: 30px;
 }
 
+.sensor-container {
+    width: 100%;
+    background-color: #c7c7c7;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
 .footer {
     background-color: #eb5534;
     color: white;
