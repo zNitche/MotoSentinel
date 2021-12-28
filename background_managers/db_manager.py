@@ -3,6 +3,7 @@ import time
 from models import Gyro, Accelerometer
 from utils import processes_utils
 from background_managers.managers_config import ManagersConfig
+from sensors.sensors_config import SensorsConfig
 
 
 class DBManager:
@@ -30,7 +31,7 @@ class DBManager:
             time.sleep(ManagersConfig.DB_MANAGER_UPDATE_RATE)
 
     def generate_gyro_data(self):
-        gyro_data = self.sensors_manager.get_sensor_data_by_sensor_name("gyro")
+        gyro_data = self.sensors_manager.get_sensor_data_by_sensor_name(SensorsConfig.GYRO_SENSOR_NAME)
 
         gyro = Gyro(timestamp=processes_utils.generate_timestamp(), x_value=gyro_data[0], y_value=gyro_data[1],
                     z_value=gyro_data[2])
@@ -38,7 +39,7 @@ class DBManager:
         return gyro
 
     def generate_accelerometer_data(self):
-        accelerometer_data = self.sensors_manager.get_sensor_data_by_sensor_name("accelerometer")
+        accelerometer_data = self.sensors_manager.get_sensor_data_by_sensor_name(SensorsConfig.ACCELEROMETER_SENSOR_NAME)
 
         accelerometer = Accelerometer(timestamp=processes_utils.generate_timestamp(), x_value=accelerometer_data[0],
                                       y_value=accelerometer_data[1], z_value=accelerometer_data[2])

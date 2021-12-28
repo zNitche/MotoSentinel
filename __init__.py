@@ -16,10 +16,10 @@ def create_app():
     with app.app_context():
         db.create_all()
 
-        from routes import content, errors, sensors
+        from routes import content, errors, sensors_api
 
         app.register_blueprint(content.content_)
         app.register_blueprint(errors.errors_)
-        app.register_blueprint(sensors.sensors_)
+        app.register_blueprint(sensors_api.sensors_)
 
         return app

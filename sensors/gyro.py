@@ -1,5 +1,6 @@
 import random
 from sensors.sensor_base import SensorBase
+from sensors.sensors_config import SensorsConfig
 from utils import logs_utils
 
 
@@ -8,7 +9,7 @@ class Gyro(SensorBase):
         super().__init__()
 
         self.sensor = None
-        self.name = "gyro"
+        self.name = SensorsConfig.GYRO_SENSOR_NAME
 
         self.x_value = 0
         self.y_value = 0
