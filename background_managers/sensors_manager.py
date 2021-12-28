@@ -1,6 +1,7 @@
 import threading
 import time
 from sensors.gyro import Gyro
+from sensors.accelerometer import Accelerometer
 from background_managers.managers_config import ManagersConfig
 
 
@@ -10,8 +11,9 @@ class SensorManager:
         self.process = threading.Thread(target=self.mainloop)
 
         self.gyro_sensor = Gyro()
+        self.accelerometer_sensor = Accelerometer()
 
-        self.sensors = [self.gyro_sensor]
+        self.sensors = [self.gyro_sensor, self.accelerometer_sensor]
 
     def start(self):
         if not self.is_running:
@@ -33,3 +35,9 @@ class SensorManager:
 
     def get_gyro_parsed_data(self):
         return self.gyro_sensor.parse_sensors_data()
+
+    def get_accelerometer_data(self):
+        return self.accelerometer_sensor.get_sensor_values()
+
+    def get_accelerometer_parsed_data(self):
+        return self.accelerometer_sensor.parse_sensors_data()
