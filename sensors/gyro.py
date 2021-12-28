@@ -1,8 +1,11 @@
 import random
+from sensors.sensor_base import SensorBase
 
 
-class Gyro:
+class Gyro(SensorBase):
     def __init__(self):
+        super().__init__()
+
         self.sensor = None
         self.name = "Gyro"
 
