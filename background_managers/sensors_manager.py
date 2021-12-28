@@ -20,7 +20,8 @@ class SensorManager:
 
     def mainloop(self):
         while self.is_running:
-            self.gyro_sensor.update()
+            for sensor in self.sensors:
+                sensor.update()
 
             time.sleep(ManagersConfig.SENSORS_MANAGER_UPDATE_RATE)
 

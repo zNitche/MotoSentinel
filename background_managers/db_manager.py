@@ -27,6 +27,7 @@ class DBManager:
 
     def update_gyro_data(self):
         gyro_data = self.sensors_handler.get_gyro_data()
+
         gyro = Gyro(timestamp=processes_utils.generate_timestamp(), x_value=gyro_data[0], y_value=gyro_data[1],
                     z_value=gyro_data[2])
 
