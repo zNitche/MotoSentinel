@@ -31,10 +31,10 @@ class Accelerometer(SensorBase):
 
     def parse_sensors_data(self):
         parsed_values = {
-            "sensor_name": self.name,
-            "x": self.x_value,
-            "y": self.y_value,
-            "z": self.z_value
+            SensorsConfig.SENSOR_NAME_KEY: self.name,
+            SensorsConfig.ACCELEROMETER_X_VALUE_NAME: self.x_value,
+            SensorsConfig.ACCELEROMETER_Y_VALUE_NAME: self.y_value,
+            SensorsConfig.ACCELEROMETER_Z_VALUE_NAME: self.z_value
         }
 
         return parsed_values

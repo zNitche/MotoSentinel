@@ -1,4 +1,5 @@
 from flask import render_template, Blueprint
+from sensors.sensors_config import SensorsConfig
 
 
 content_ = Blueprint("content", __name__, template_folder='template', static_folder='static')
@@ -10,7 +11,7 @@ def home():
 
     sensors_data = [sensor.parse_sensors_data() for sensor in sensors_manager.get_sensors()]
 
-    return render_template("index.html", sensors_data=sensors_data)
+    return render_template("index.html", sensors_data=sensors_data, sensors_config=SensorsConfig)
 
 
 @content_.route("/settings")
