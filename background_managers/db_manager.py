@@ -21,17 +21,17 @@ class DBManager:
 
     def mainloop(self):
         while self.is_running:
-            self.update_gyro_data()
+            with self.app.app_context():
+                self.database.session.add(self.generate_gyro_data())
+
+                self.database.session.commit()
 
             time.sleep(ManagersConfig.DB_MANAGER_UPDATE_RATE)
 
-    def update_gyro_data(self):
+    def generate_gyro_data(self):
         gyro_data = self.sensors_manager.get_sensor_data_by_sensor_name("gyro")
 
         gyro = Gyro(timestamp=processes_utils.generate_timestamp(), x_value=gyro_data[0], y_value=gyro_data[1],
                     z_value=gyro_data[2])
 
-        with self.app.app_context():
-            self.database.session.add(gyro)
-
-            self.database.session.commit()
+        return gyro
