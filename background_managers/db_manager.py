@@ -1,6 +1,6 @@
 import multiprocessing
 import time
-from models import Gyro
+from models import Gyro, Accelerometer
 from utils import processes_utils
 from background_managers.managers_config import ManagersConfig
 
@@ -23,6 +23,7 @@ class DBManager:
         while self.is_running:
             with self.app.app_context():
                 self.database.session.add(self.generate_gyro_data())
+                self.database.session.add(self.generate_accelerometer_data())
 
                 self.database.session.commit()
 
@@ -35,3 +36,11 @@ class DBManager:
                     z_value=gyro_data[2])
 
         return gyro
+
+    def generate_accelerometer_data(self):
+        accelerometer_data = self.sensors_manager.get_sensor_data_by_sensor_name("accelerometer")
+
+        accelerometer = Accelerometer(timestamp=processes_utils.generate_timestamp(), x_value=accelerometer_data[0],
+                                      y_value=accelerometer_data[1], z_value=accelerometer_data[2])
+
+        return accelerometer
