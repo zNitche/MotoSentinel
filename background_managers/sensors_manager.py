@@ -30,14 +30,22 @@ class SensorManager:
     def get_sensors(self):
         return self.sensors
 
-    def get_gyro_data(self):
-        return self.gyro_sensor.get_sensor_values()
+    def get_sensor_data_by_sensor_name(self, sensor_name):
+        sensor_data = None
 
-    def get_gyro_parsed_data(self):
-        return self.gyro_sensor.parse_sensors_data()
+        for sensor in self.sensors:
+            if sensor.name == sensor_name:
+                sensor_data = sensor.get_sensor_values()
+                break
 
-    def get_accelerometer_data(self):
-        return self.accelerometer_sensor.get_sensor_values()
+        return sensor_data
 
-    def get_accelerometer_parsed_data(self):
-        return self.accelerometer_sensor.parse_sensors_data()
+    def get_sensor_parsed_data_by_sensor_name(self, sensor_name):
+        parsed_sensor_data = None
+
+        for sensor in self.sensors:
+            if sensor.name == sensor_name:
+                parsed_sensor_data = sensor.parse_sensors_data()
+                break
+
+        return parsed_sensor_data

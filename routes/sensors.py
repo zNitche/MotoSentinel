@@ -8,11 +8,11 @@ sensors_ = Blueprint("sensors", __name__, template_folder='template', static_fol
 def gyro():
     from app import sensors_manager
 
-    return jsonify(sensors_manager.get_gyro_parsed_data())
+    return jsonify(sensors_manager.get_sensor_parsed_data_by_sensor_name("gyro"))
 
 
 @sensors_.route("/sensors/accelerometer")
 def accelerometer():
     from app import sensors_manager
 
-    return jsonify(sensors_manager.get_accelerometer_parsed_data())
+    return jsonify(sensors_manager.get_sensor_parsed_data_by_sensor_name("accelerometer"))

@@ -6,10 +6,10 @@ from background_managers.managers_config import ManagersConfig
 
 
 class DBManager:
-    def __init__(self, app, db, sensors_handler):
+    def __init__(self, app, db, sensors_manager):
         self.app = app
         self.database = db
-        self.sensors_handler = sensors_handler
+        self.sensors_manager = sensors_manager
 
         self.is_running = False
         self.process = multiprocessing.Process(target=self.mainloop)
@@ -26,7 +26,7 @@ class DBManager:
             time.sleep(ManagersConfig.DB_MANAGER_UPDATE_RATE)
 
     def update_gyro_data(self):
-        gyro_data = self.sensors_handler.get_gyro_data()
+        gyro_data = self.sensors_manager.get_sensor_data_by_sensor_name("gyro")
 
         gyro = Gyro(timestamp=processes_utils.generate_timestamp(), x_value=gyro_data[0], y_value=gyro_data[1],
                     z_value=gyro_data[2])
