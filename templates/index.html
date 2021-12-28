@@ -1,9 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
         {% for sensor_data in sensors_data %}
-            <div class="sensor-container">
+            <div class="sensor-container" id="{{ sensor_data['sensor_name'] }}">
+                <script>
+                   initSensorUpdate("{{ sensor_data['sensor_name'] }}");
+                </script>
+
                 {% for data in sensor_data %}
-                    <p>
+                    <p id="{{ data }}">
                         {{ data }} : {{ sensor_data[data] }}
                     </p>
                 {% endfor %}

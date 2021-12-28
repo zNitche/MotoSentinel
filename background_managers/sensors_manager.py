@@ -25,8 +25,11 @@ class SensorManager:
 
             time.sleep(ManagersConfig.SENSORS_MANAGER_UPDATE_RATE)
 
+    def get_sensors(self):
+        return self.sensors
+
     def get_gyro_data(self):
         return self.gyro_sensor.get_sensor_values()
 
-    def get_sensors(self):
-        return self.sensors
+    def get_gyro_parsed_data(self):
+        return self.gyro_sensor.parse_sensors_data()

@@ -1,5 +1,6 @@
 import random
 from sensors.sensor_base import SensorBase
+from utils import logs_utils
 
 
 class Gyro(SensorBase):
@@ -7,7 +8,7 @@ class Gyro(SensorBase):
         super().__init__()
 
         self.sensor = None
-        self.name = "Gyro"
+        self.name = "gyro"
 
         self.x_value = 0
         self.y_value = 0
@@ -15,10 +16,12 @@ class Gyro(SensorBase):
 
     def update(self):
         # TMP Mock
-
-        self.x_value = random.randint(0, 10)
-        self.y_value = random.randint(0, 10)
-        self.z_value = random.randint(0, 10)
+        try:
+            self.x_value = random.randint(0, 10)
+            self.y_value = random.randint(0, 10)
+            self.z_value = random.randint(0, 10)
+        except Exception as e:
+            logs_utils.log(e)
 
     def get_sensor_values(self):
         values = [self.x_value, self.y_value, self.z_value]
