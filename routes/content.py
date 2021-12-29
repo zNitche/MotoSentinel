@@ -1,5 +1,6 @@
 from flask import render_template, Blueprint
 from sensors.sensors_config import SensorsConfig
+from utils import graphs_utils
 
 
 content_ = Blueprint("content", __name__, template_folder='template', static_folder='static')
@@ -21,4 +22,7 @@ def settings():
 
 @content_.route("/graphs")
 def graphs():
-    return "Graphs"
+    #sensors_graphs = [graphs_utils.generate_acceleration_2d_graphs()]
+    sensors_graphs = [[graphs_utils.generate_acceleration_2d_graphs()]]
+
+    return render_template("graphs.html", sensors_graphs=sensors_graphs)
