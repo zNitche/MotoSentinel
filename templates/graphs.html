@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
         {% for sensor_graphs in sensors_graphs %}
-            <div class="sensor-container">
+            <div class="graph-container">
                 {% for graph in sensor_graphs %}
                     <p>
-                        <img src="{{ graph }}">
+                        <img class="graph-img" src="{{ graph }}">
                     </p>
                 {% endfor %}
             </div>

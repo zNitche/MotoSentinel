@@ -46,6 +46,18 @@ body {
     margin: 10px 0 10px 0;
 }
 
+.graph-container {
+    align-content: center;
+    width: 100%;
+    background-color: #c7c7c7;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border-radius: 20px;
+    margin: 10px 0 10px 0;
+}
+
 .footer {
     background-color: #eb5534;
     color: white;
@@ -67,4 +79,8 @@ a {
 
 .navbar a:hover {
     color: #ffd7cf;
+}
+
+.graph-img {
+    max-width: 100%
 }
