@@ -41,7 +41,7 @@ class SensorManager:
         return sensor_data
 
     def get_sensor_parsed_data_by_sensor_name(self, sensor_name):
-        parsed_sensor_data = None
+        parsed_sensor_data = {}
 
         for sensor in self.sensors:
             if sensor.name == sensor_name:
