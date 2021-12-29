@@ -23,6 +23,6 @@ def settings():
 @content_.route("/graphs")
 def graphs():
     #sensors_graphs = [graphs_utils.generate_acceleration_2d_graphs()]
-    sensors_graphs = [[graphs_utils.generate_acceleration_2d_graphs()]]
+    sensors_graphs = [graphs_utils.generate_acceleration_2d_graphs()]
 
     return render_template("graphs.html", sensors_graphs=sensors_graphs)

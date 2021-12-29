@@ -17,9 +17,9 @@ def generate_acceleration_2d_graphs():
 
     for data in accelerometer_data:
         timestamps.append(data.timestamp)
-        x_values.append(int(data.x_value))
-        y_values.append(int(data.y_value))
-        z_values.append(int(data.z_value))
+        x_values.append(data.x_value)
+        y_values.append(data.y_value)
+        z_values.append(data.z_value)
 
     graphs.append(generate_graph(timestamps, x_values))
     graphs.append(generate_graph(timestamps, y_values))
