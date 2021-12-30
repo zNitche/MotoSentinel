@@ -1,20 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
-        <div class="settings-container">
-            <p>
-                Graphs
-            </p>
-
-            <form method="GET" action="{{ url_for('settings.set_time_range') }}" enctype="multipart/form-data">
-                <span>
+        {% if settings|length > 0 %}
+            {% for settings_struct in settings %}
+                <div class="settings-container">
                     <p>
-                        Acceleration Graphs
+                        {{ settings_struct["title"] }}
                     </p>
-                    <input type="text" id="{{ settings_config.SETTINGS_ACCELERATION_TIME_RANGE_KEY_NAME }}"
-                           name="{{ settings_config.SETTINGS_ACCELERATION_TIME_RANGE_KEY_NAME }}"
-                           placeholder="time range" value="{{ settings_data[settings_config.SETTINGS_ACCELERATION_TIME_RANGE_KEY_NAME] }}">
-                </span>
-                <button class="settings-button" type="submit">Apply</button>
-            </form>
-        </div>
+                    {% for mode in settings_struct["modes"] %}
+                        <form method="GET" action="{{ url_for('settings.set_time_range', mode=mode) }}" enctype="multipart/form-data">
+                            <span>
+                                <p>
+                                    {{ mode }}
+                                </p>
+                                <input type="text" id="{{ mode }}"
+                                       name="{{ mode }}"
+                                       placeholder="time range" value="{{ settings_data[mode] }}">
+                            </span>
+                            <button class="settings-button" type="submit">Apply</button>
+                        </form>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>
+                Nothing to show
+            </p>
+        {% endif %}
 {% endblock %}

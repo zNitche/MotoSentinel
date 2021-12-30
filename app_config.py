@@ -26,3 +26,12 @@ class SettingsConfig:
     SETTINGS_STRUCT = {
         SETTINGS_ACCELERATION_TIME_RANGE_KEY_NAME: DEFAULT_ACCELERATION_TIME_RANGE
     }
+
+    SETTINGS_PAGE_STRUCT = [
+        {
+            "title": "Acceleration Time Range",
+            "modes": [
+                SETTINGS_ACCELERATION_TIME_RANGE_KEY_NAME
+            ]
+        }
+    ]
