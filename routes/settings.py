@@ -6,14 +6,14 @@ from app_config import AppConfig
 settings_ = Blueprint("settings", __name__, template_folder='template', static_folder='static')
 
 
-@settings_.route("/settings/graphs/set_refresh", methods=["GET"])
-def graphs_set_refresh():
-    if request.args.get("refresh_rate"):
-        refresh_rate = int(request.args.get("refresh_rate"))
+@settings_.route("/settings/graphs/set_time_range", methods=["GET"])
+def set_time_range():
+    if request.args.get("time_range"):
+        refresh_rate = int(request.args.get("time_range"))
 
         settings_data = settings_utils.load_settings()
 
-        settings_data[AppConfig.SETTINGS_REFRESH_RATE_KEY_NAME] = refresh_rate
+        settings_data[AppConfig.SETTINGS_TIME_RANGE_KEY_NAME] = refresh_rate
 
         settings_utils.save_settings(settings_data)
 

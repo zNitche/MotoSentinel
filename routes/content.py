@@ -20,12 +20,12 @@ def home():
 def settings():
     settings_data = settings_utils.load_settings()
 
-    refresh_rate = 60
+    time_range = AppConfig.DEFAULT_TIME_RANGE
 
     if len(settings_data.keys()) > 0:
-        refresh_rate = settings_data[AppConfig.SETTINGS_REFRESH_RATE_KEY_NAME]
+        time_range = settings_data[AppConfig.SETTINGS_TIME_RANGE_KEY_NAME]
 
-    return render_template("settings.html", refresh_rate=refresh_rate)
+    return render_template("settings.html", time_range=time_range)
 
 
 @content_.route("/graphs")

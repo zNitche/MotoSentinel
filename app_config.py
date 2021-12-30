@@ -18,4 +18,5 @@ class AppConfig:
     PNG_ENCODE_STRING = "data:image/png;base64,"
     GRAPH_DPI_RESOLUTION = 150
 
-    SETTINGS_REFRESH_RATE_KEY_NAME = "refresh_rate"
+    SETTINGS_TIME_RANGE_KEY_NAME = "time_range"
+    DEFAULT_TIME_RANGE = 60

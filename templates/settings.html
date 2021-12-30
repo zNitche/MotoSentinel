@@ -5,8 +5,8 @@
                 Graphs
             </p>
 
-            <form method="GET" action="{{ url_for('settings.graphs_set_refresh') }}" enctype="multipart/form-data">
-                <input type="text" id="refresh_rate" name="refresh_rate" placeholder="refresh rate" value="{{ refresh_rate }}">
+            <form method="GET" action="{{ url_for('settings.set_time_range') }}" enctype="multipart/form-data">
+                <input type="text" id="time_range" name="time_range" placeholder="time range" value="{{ time_range }}">
                 <button class="settings-button" type="submit">Apply</button>
             </form>
         </div>
