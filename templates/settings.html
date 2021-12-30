@@ -6,7 +6,14 @@
             </p>
 
             <form method="GET" action="{{ url_for('settings.set_time_range') }}" enctype="multipart/form-data">
-                <input type="text" id="time_range" name="time_range" placeholder="time range" value="{{ time_range }}">
+                <span>
+                    <p>
+                        Acceleration Graphs
+                    </p>
+                    <input type="text" id="{{ settings_config.SETTINGS_ACCELERATION_TIME_RANGE_KEY_NAME }}"
+                           name="{{ settings_config.SETTINGS_ACCELERATION_TIME_RANGE_KEY_NAME }}"
+                           placeholder="time range" value="{{ settings_data[settings_config.SETTINGS_ACCELERATION_TIME_RANGE_KEY_NAME] }}">
+                </span>
                 <button class="settings-button" type="submit">Apply</button>
             </form>
         </div>

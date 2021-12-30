@@ -4,7 +4,7 @@ import base64
 from datetime import datetime, timedelta
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
-from app_config import AppConfig
+from app_config import AppConfig, SettingsConfig
 from utils import settings_utils
 
 
@@ -31,7 +31,7 @@ def generate_acceleration_2d_graphs():
 
     settings_data = settings_utils.load_settings()
 
-    timestamps, x_values, y_values, z_values = get_acceleration_data(settings_data[AppConfig.SETTINGS_TIME_RANGE_KEY_NAME])
+    timestamps, x_values, y_values, z_values = get_acceleration_data(settings_data[SettingsConfig.SETTINGS_ACCELERATION_TIME_RANGE_KEY_NAME])
 
     graphs.append(generate_2d_graph(timestamps, x_values, "x-axis acceleration", "time", "acceleration"))
     graphs.append(generate_2d_graph(timestamps, y_values, "y-axis acceleration", "time", "acceleration"))
@@ -65,7 +65,7 @@ def generate_gyro_2d_graphs():
 
     settings_data = settings_utils.load_settings()
 
-    timestamps, x_values, y_values, z_values = get_gyro_data(settings_data[AppConfig.SETTINGS_TIME_RANGE_KEY_NAME])
+    timestamps, x_values, y_values, z_values = get_gyro_data(settings_data[SettingsConfig.SETTINGS_ACCELERATION_TIME_RANGE_KEY_NAME])
 
     graphs.append(generate_2d_graph(timestamps, x_values, "x-axis gyro", "time", "gyro"))
     graphs.append(generate_2d_graph(timestamps, y_values, "y-axis gyro", "time", "gyro"))

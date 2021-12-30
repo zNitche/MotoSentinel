@@ -1,7 +1,7 @@
 from flask import render_template, Blueprint
 from sensors.sensors_config import SensorsConfig
 from utils import graphs_utils, settings_utils
-from app_config import AppConfig
+from app_config import SettingsConfig
 
 
 content_ = Blueprint("content", __name__, template_folder='template', static_folder='static')
@@ -20,9 +20,7 @@ def home():
 def settings():
     settings_data = settings_utils.load_settings()
 
-    time_range = settings_data[AppConfig.SETTINGS_TIME_RANGE_KEY_NAME]
-
-    return render_template("settings.html", time_range=time_range)
+    return render_template("settings.html", settings_data=settings_data, settings_config=SettingsConfig)
 
 
 @content_.route("/graphs")

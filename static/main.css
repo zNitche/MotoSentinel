@@ -91,6 +91,7 @@ body {
 .settings-container form {
     display: flex;
     flex-direction: column;
+    text-align: center;
 }
 
 .footer {
