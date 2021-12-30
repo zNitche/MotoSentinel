@@ -1,6 +1,7 @@
 from __init__ import create_app, db
 from background_managers.sensors_manager import SensorManager
 from background_managers.db_manager import DBManager
+from utils import settings_utils
 
 
 app = create_app()
@@ -10,6 +11,8 @@ db_manager = DBManager(app, db, sensors_manager)
 
 sensors_manager.start()
 db_manager.start()
+
+settings_utils.init_settings()
 
 if __name__ == "__main__":
     APP_PORT = app.config["APP_PORT"]

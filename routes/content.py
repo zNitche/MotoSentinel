@@ -20,10 +20,7 @@ def home():
 def settings():
     settings_data = settings_utils.load_settings()
 
-    time_range = AppConfig.DEFAULT_TIME_RANGE
-
-    if len(settings_data.keys()) > 0:
-        time_range = settings_data[AppConfig.SETTINGS_TIME_RANGE_KEY_NAME]
+    time_range = settings_data[AppConfig.SETTINGS_TIME_RANGE_KEY_NAME]
 
     return render_template("settings.html", time_range=time_range)
 
