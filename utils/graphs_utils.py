@@ -65,7 +65,7 @@ def generate_gyro_2d_graphs():
 
     settings_data = settings_utils.load_settings()
 
-    timestamps, x_values, y_values, z_values = get_gyro_data(settings_data[SettingsConfig.SETTINGS_ACCELERATION_TIME_RANGE_KEY_NAME])
+    timestamps, x_values, y_values, z_values = get_gyro_data(settings_data[SettingsConfig.SETTINGS_GYRO_TIME_RANGE_KEY_NAME])
 
     graphs.append(generate_2d_graph(timestamps, x_values, "x-axis gyro", "time", "gyro"))
     graphs.append(generate_2d_graph(timestamps, y_values, "y-axis gyro", "time", "gyro"))

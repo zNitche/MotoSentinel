@@ -20,7 +20,7 @@ def home():
 def settings():
     settings_data = settings_utils.load_settings()
 
-    return render_template("settings.html", settings_data=settings_data, settings_config=SettingsConfig, settings=SettingsConfig.SETTINGS_PAGE_STRUCT)
+    return render_template("settings.html", settings_data=settings_data, settings_config=SettingsConfig)
 
 
 @content_.route("/graphs")
