@@ -6,8 +6,7 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 
 
-def generate_acceleration_2d_graphs():
-    graphs = []
+def get_acceleration_data(time_range):
     accelerometer_data = Accelerometer.query.all()
 
     timestamps = []
@@ -16,26 +15,30 @@ def generate_acceleration_2d_graphs():
     z_values = []
 
     for data in accelerometer_data:
-        if datetime.now() - timedelta(hours=1) <= data.timestamp:
+        if datetime.now() - timedelta(hours=time_range) <= data.timestamp:
             timestamps.append(data.timestamp)
             x_values.append(data.x_value)
             y_values.append(data.y_value)
             z_values.append(data.z_value)
 
-    graphs.append(generate_graph(timestamps, x_values, "x-axis acceleration", "time", "acceleration"))
-    graphs.append(generate_graph(timestamps, y_values, "y-axis acceleration", "time", "acceleration"))
-    graphs.append(generate_graph(timestamps, z_values, "z-axis acceleration", "time", "acceleration"))
+    return timestamps, x_values, y_values, z_values
+
+
+def generate_acceleration_2d_graphs():
+    graphs = []
+
+    timestamps, x_values, y_values, z_values = get_acceleration_data(1)
+
+    graphs.append(generate_2d_graph(timestamps, x_values, "x-axis acceleration", "time", "acceleration"))
+    graphs.append(generate_2d_graph(timestamps, y_values, "y-axis acceleration", "time", "acceleration"))
+    graphs.append(generate_2d_graph(timestamps, z_values, "z-axis acceleration", "time", "acceleration"))
 
     encoded_graphs = [encode_graph(graph) for graph in graphs]
 
     return encoded_graphs
 
 
-def graph_by_type(graph_type):
-    pass
-
-
-def generate_graph(x_points, y_points, title, x_title, y_title):
+def generate_2d_graph(x_points, y_points, title, x_title, y_title):
     fig = Figure()
     fig.set_dpi(150)
 
