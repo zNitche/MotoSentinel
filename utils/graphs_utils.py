@@ -7,7 +7,7 @@ from matplotlib.figure import Figure
 from app_config import AppConfig
 
 
-def get_acceleration_data(time_range):
+def get_acceleration_data(minutes_time_range):
     accelerometer_data = Accelerometer.query.all()
 
     timestamps = []
@@ -16,7 +16,7 @@ def get_acceleration_data(time_range):
     z_values = []
 
     for data in accelerometer_data:
-        if datetime.now() - timedelta(hours=time_range) <= data.timestamp:
+        if datetime.now() - timedelta(minutes=minutes_time_range) <= data.timestamp:
             timestamps.append(data.timestamp)
             x_values.append(data.x_value)
             y_values.append(data.y_value)
@@ -28,7 +28,7 @@ def get_acceleration_data(time_range):
 def generate_acceleration_2d_graphs():
     graphs = []
 
-    timestamps, x_values, y_values, z_values = get_acceleration_data(1)
+    timestamps, x_values, y_values, z_values = get_acceleration_data(60)
 
     graphs.append(generate_2d_graph(timestamps, x_values, "x-axis acceleration", "time", "acceleration"))
     graphs.append(generate_2d_graph(timestamps, y_values, "y-axis acceleration", "time", "acceleration"))
@@ -39,7 +39,7 @@ def generate_acceleration_2d_graphs():
     return encoded_graphs
 
 
-def get_gyro_data(time_range):
+def get_gyro_data(minutes_time_range):
     gyro_data = Gyro.query.all()
 
     timestamps = []
@@ -48,7 +48,7 @@ def get_gyro_data(time_range):
     z_values = []
 
     for data in gyro_data:
-        if datetime.now() - timedelta(hours=time_range) <= data.timestamp:
+        if datetime.now() - timedelta(minutes=minutes_time_range) <= data.timestamp:
             timestamps.append(data.timestamp)
             x_values.append(data.x_value)
             y_values.append(data.y_value)
@@ -60,7 +60,7 @@ def get_gyro_data(time_range):
 def generate_gyro_2d_graphs():
     graphs = []
 
-    timestamps, x_values, y_values, z_values = get_gyro_data(1)
+    timestamps, x_values, y_values, z_values = get_gyro_data(60)
 
     graphs.append(generate_2d_graph(timestamps, x_values, "x-axis gyro", "time", "gyro"))
     graphs.append(generate_2d_graph(timestamps, y_values, "y-axis gyro", "time", "gyro"))
