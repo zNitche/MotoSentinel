@@ -12,3 +12,6 @@ class AppConfig:
 
     DO_LOGS = True
     LOGS_PATH = os.path.join(CURRENT_DIR, "log.txt")
+
+    PNG_ENCODE_STRING = "data:image/png;base64,"
+    GRAPH_DPI_RESOLUTION = 150

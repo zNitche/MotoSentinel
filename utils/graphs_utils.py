@@ -4,6 +4,7 @@ import base64
 from datetime import datetime, timedelta
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
+from app_config import AppConfig
 
 
 def get_acceleration_data(time_range):
@@ -72,7 +73,7 @@ def generate_gyro_2d_graphs():
 
 def generate_2d_graph(x_points, y_points, title, x_title, y_title):
     fig = Figure()
-    fig.set_dpi(150)
+    fig.set_dpi(AppConfig.GRAPH_DPI_RESOLUTION)
 
     axis = fig.add_subplot(1, 1, 1)
 
@@ -90,7 +91,7 @@ def encode_graph(fig):
     png_image = io.BytesIO()
     FigureCanvas(fig).print_png(png_image)
 
-    encoded_png_string = "data:image/png;base64,"
+    encoded_png_string = AppConfig.PNG_ENCODE_STRING
     encoded_png_string += base64.b64encode(png_image.getvalue()).decode("utf8")
 
     return encoded_png_string
