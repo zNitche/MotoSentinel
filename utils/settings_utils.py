@@ -1,6 +1,7 @@
 import json
 import os
-from app_config import AppConfig, SettingsConfig
+from app_config import AppConfig
+from settings_config import SettingsConfig
 
 
 def init_settings():

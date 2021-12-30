@@ -4,7 +4,8 @@ import base64
 from datetime import datetime, timedelta
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
-from app_config import AppConfig, SettingsConfig
+from app_config import AppConfig
+from settings_config import SettingsConfig
 from utils import settings_utils
 
 

@@ -1,7 +1,7 @@
 from flask import render_template, Blueprint
 from sensors.sensors_config import SensorsConfig
 from utils import graphs_utils, settings_utils
-from app_config import SettingsConfig
+from settings_config import SettingsConfig
 
 
 content_ = Blueprint("content", __name__, template_folder='template', static_folder='static')
