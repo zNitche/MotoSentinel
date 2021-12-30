@@ -1,6 +1,7 @@
 from models import Accelerometer
 import io
 import base64
+from datetime import datetime, timedelta
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 
@@ -15,10 +16,11 @@ def generate_acceleration_2d_graphs():
     z_values = []
 
     for data in accelerometer_data:
-        timestamps.append(data.timestamp)
-        x_values.append(data.x_value)
-        y_values.append(data.y_value)
-        z_values.append(data.z_value)
+        if datetime.now() - timedelta(hours=1) <= data.timestamp:
+            timestamps.append(data.timestamp)
+            x_values.append(data.x_value)
+            y_values.append(data.y_value)
+            z_values.append(data.z_value)
 
     graphs.append(generate_graph(timestamps, x_values, "x-axis acceleration", "time", "acceleration"))
     graphs.append(generate_graph(timestamps, y_values, "y-axis acceleration", "time", "acceleration"))
