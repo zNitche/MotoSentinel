@@ -1,4 +1,4 @@
-from models import Accelerometer
+from models import Accelerometer, Gyro
 import io
 import base64
 from datetime import datetime, timedelta
@@ -32,6 +32,38 @@ def generate_acceleration_2d_graphs():
     graphs.append(generate_2d_graph(timestamps, x_values, "x-axis acceleration", "time", "acceleration"))
     graphs.append(generate_2d_graph(timestamps, y_values, "y-axis acceleration", "time", "acceleration"))
     graphs.append(generate_2d_graph(timestamps, z_values, "z-axis acceleration", "time", "acceleration"))
+
+    encoded_graphs = [encode_graph(graph) for graph in graphs]
+
+    return encoded_graphs
+
+
+def get_gyro_data(time_range):
+    gyro_data = Gyro.query.all()
+
+    timestamps = []
+    x_values = []
+    y_values = []
+    z_values = []
+
+    for data in gyro_data:
+        if datetime.now() - timedelta(hours=time_range) <= data.timestamp:
+            timestamps.append(data.timestamp)
+            x_values.append(data.x_value)
+            y_values.append(data.y_value)
+            z_values.append(data.z_value)
+
+    return timestamps, x_values, y_values, z_values
+
+
+def generate_gyro_2d_graphs():
+    graphs = []
+
+    timestamps, x_values, y_values, z_values = get_gyro_data(1)
+
+    graphs.append(generate_2d_graph(timestamps, x_values, "x-axis gyro", "time", "gyro"))
+    graphs.append(generate_2d_graph(timestamps, y_values, "y-axis gyro", "time", "gyro"))
+    graphs.append(generate_2d_graph(timestamps, z_values, "z-axis gyro", "time", "gyro"))
 
     encoded_graphs = [encode_graph(graph) for graph in graphs]
 

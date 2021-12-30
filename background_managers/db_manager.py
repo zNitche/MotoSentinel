@@ -2,7 +2,6 @@ import multiprocessing
 import time
 from datetime import datetime
 from models import Gyro, Accelerometer
-from utils import processes_utils
 from background_managers.managers_config import ManagersConfig
 from sensors.sensors_config import SensorsConfig
 
@@ -47,6 +46,6 @@ class DBManager:
         accelerometer = Accelerometer(timestamp=datetime.now(),
                                       x_value=accelerometer_data[SensorsConfig.ACCELEROMETER_X_VALUE_NAME],
                                       y_value=accelerometer_data[SensorsConfig.ACCELEROMETER_Y_VALUE_NAME],
-                                      z_value=accelerometer_data[SensorsConfig.ACCELEROMETER_X_VALUE_NAME])
+                                      z_value=accelerometer_data[SensorsConfig.ACCELEROMETER_Z_VALUE_NAME])
 
         return accelerometer
