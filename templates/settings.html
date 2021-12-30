@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+        <div class="settings-container">
+            <p>
+                Graphs
+            </p>
+
+            <form method="GET" action="{{ url_for('settings.graphs_set_refresh') }}" enctype="multipart/form-data">
+                <input type="text" id="refresh_rate" name="refresh_rate" placeholder="refresh rate" value="{{ refresh_rate }}">
+                <button class="settings-button" type="submit">Apply</button>
+            </form>
+        </div>
+{% endblock %}

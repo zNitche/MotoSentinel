@@ -13,5 +13,9 @@ class AppConfig:
     DO_LOGS = True
     LOGS_PATH = os.path.join(CURRENT_DIR, "log.txt")
 
+    SETTINGS_PATH = os.path.join(CURRENT_DIR, "settings.json")
+
     PNG_ENCODE_STRING = "data:image/png;base64,"
     GRAPH_DPI_RESOLUTION = 150
+
+    SETTINGS_REFRESH_RATE_KEY_NAME = "refresh_rate"

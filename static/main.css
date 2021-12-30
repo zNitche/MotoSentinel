@@ -58,6 +58,41 @@ body {
     margin: 10px 0 10px 0;
 }
 
+.settings-container {
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #c7c7c7;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border-radius: 20px;
+    margin: 10px 0 10px 0;
+}
+
+.settings-button {
+    background-color: #de7914;
+    border: none;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.settings-container input {
+    margin-bottom: 10px;
+}
+
+.settings-button:hover {
+    background-color: #f59536;
+}
+
+.settings-container form {
+    display: flex;
+    flex-direction: column;
+}
+
 .footer {
     background-color: #eb5534;
     color: white;
