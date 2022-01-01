@@ -7,7 +7,7 @@ from utils import settings_utils
 app = create_app()
 
 sensors_manager = SensorManager()
-db_manager = DBManager(app, db, sensors_manager)
+db_manager = DBManager(app, db)
 
 sensors_manager.start()
 db_manager.start()
