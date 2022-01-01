@@ -1,4 +1,6 @@
-import random
+import board
+import busio
+import adafruit_l3gd20
 from sensors.sensor_base import SensorBase
 from sensors.sensors_config import SensorsConfig
 from utils import logs_utils
@@ -8,7 +10,7 @@ class Gyro(SensorBase):
     def __init__(self):
         super().__init__()
 
-        self.sensor = None
+        self.sensor = adafruit_l3gd20.L3GD20_I2C(busio.I2C(board.SCL, board.SDA))
         self.name = SensorsConfig.GYRO_SENSOR_NAME
 
         self.x_value = 0
@@ -18,9 +20,9 @@ class Gyro(SensorBase):
     def update(self):
         # TMP Mock
         try:
-            self.x_value = random.randint(0, 10)
-            self.y_value = random.randint(0, 10)
-            self.z_value = random.randint(0, 10)
+            self.x_value = self.sensor.gyro[0]
+            self.y_value = self.sensor.gyro[1]
+            self.z_value = self.sensor.gyro[2]
         except Exception as e:
             logs_utils.log(e)
 
