@@ -18,7 +18,6 @@ class Accelerometer(SensorBase):
         self.z_value = 0
 
     def update(self):
-        # TMP Mock
         try:
             self.x_value = self.sensor.acceleration[0]
             self.y_value = self.sensor.acceleration[1]
