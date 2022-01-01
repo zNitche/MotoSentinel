@@ -5,7 +5,7 @@ class AppConfig:
     CURRENT_DIR = os.path.dirname(os.path.realpath(__file__))
     APP_PORT = 8080
     APP_HOST = "0.0.0.0"
-    DEBUG_MODE = True
+    DEBUG_MODE = False
 
     SQLALCHEMY_DATABASE_URI = "sqlite:///database.db"
     SQLALCHEMY_TRACK_MODIFICATIONS = False

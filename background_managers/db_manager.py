@@ -1,4 +1,4 @@
-import multiprocessing
+import threading
 import time
 from datetime import datetime
 from models import Gyro, Accelerometer
@@ -12,7 +12,7 @@ class DBManager:
         self.database = db
 
         self.is_running = False
-        self.process = multiprocessing.Process(target=self.mainloop)
+        self.process = threading.Thread(target=self.mainloop)
 
     def start(self):
         if not self.is_running:
