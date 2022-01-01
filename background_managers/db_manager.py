@@ -7,9 +7,10 @@ from sensors.sensors_config import SensorsConfig
 
 
 class DBManager:
-    def __init__(self, app, db):
+    def __init__(self, app, db, sensors_manager):
         self.app = app
         self.database = db
+        self.sensors_manager = sensors_manager
 
         self.is_running = False
         self.process = threading.Thread(target=self.mainloop)
@@ -28,11 +29,10 @@ class DBManager:
                 self.database.session.commit()
 
             time.sleep(ManagersConfig.DB_MANAGER_UPDATE_RATE)
+            print("updating mainloop")
 
     def generate_gyro_data(self):
-        from app import sensors_manager
-
-        gyro_data = sensors_manager.get_sensor_parsed_data_by_sensor_name(SensorsConfig.GYRO_SENSOR_NAME)
+        gyro_data = self.sensors_manager.get_sensor_parsed_data_by_sensor_name(SensorsConfig.GYRO_SENSOR_NAME)
 
         gyro = Gyro(timestamp=datetime.now(),
                     x_value=gyro_data[SensorsConfig.GYRO_X_VALUE_NAME],
@@ -42,9 +42,7 @@ class DBManager:
         return gyro
 
     def generate_accelerometer_data(self):
-        from app import sensors_manager
-
-        accelerometer_data = sensors_manager.get_sensor_parsed_data_by_sensor_name(SensorsConfig.ACCELEROMETER_SENSOR_NAME)
+        accelerometer_data = self.sensors_manager.get_sensor_parsed_data_by_sensor_name(SensorsConfig.ACCELEROMETER_SENSOR_NAME)
 
         accelerometer = Accelerometer(timestamp=datetime.now(),
                                       x_value=accelerometer_data[SensorsConfig.ACCELEROMETER_X_VALUE_NAME],
