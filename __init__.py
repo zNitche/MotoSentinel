@@ -13,8 +13,20 @@ def create_app():
 
     db.init_app(app)
 
+    from background_managers.sensors_manager import SensorManager
+    from background_managers.db_manager import DBManager
+
+    sensors_manager = SensorManager()
+    sensors_manager.start()
+
     with app.app_context():
         db.create_all()
+
+        db_manager = DBManager(db, app, sensors_manager)
+        db_manager.start()
+
+        app.config["DB_MANAGER"] = db_manager
+        app.config["SENSORS_MANAGER"] = sensors_manager
 
         from routes import content, errors, sensors_api, settings
 

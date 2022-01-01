@@ -1,4 +1,4 @@
-from flask import render_template, Blueprint
+from flask import render_template, Blueprint, current_app
 from sensors.sensors_config import SensorsConfig
 from utils import graphs_utils, settings_utils
 from settings_config import SettingsConfig
@@ -9,7 +9,7 @@ content_ = Blueprint("content", __name__, template_folder='template', static_fol
 
 @content_.route("/")
 def home():
-    from app import sensors_manager
+    sensors_manager = current_app.config["SENSORS_MANAGER"]
 
     sensors_data = [sensor.parse_sensors_data() for sensor in sensors_manager.get_sensors()]
 
