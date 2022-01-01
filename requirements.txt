@@ -2,3 +2,4 @@ Flask==2.0.1
 Flask-SQLAlchemy==2.5.1
 matplotlib==3.5.1
 adafruit-circuitpython-adxl34x==1.11.9
+adafruit-circuitpython-l3gd20==2.3.7
