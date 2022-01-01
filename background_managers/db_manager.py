@@ -29,7 +29,6 @@ class DBManager:
                 self.database.session.commit()
 
             time.sleep(ManagersConfig.DB_MANAGER_UPDATE_RATE)
-            print("updating mainloop")
 
     def generate_gyro_data(self):
         gyro_data = self.sensors_manager.get_sensor_parsed_data_by_sensor_name(SensorsConfig.GYRO_SENSOR_NAME)

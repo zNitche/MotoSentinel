@@ -22,7 +22,7 @@ def create_app():
     with app.app_context():
         db.create_all()
 
-        db_manager = DBManager(db, app, sensors_manager)
+        db_manager = DBManager(app, db, sensors_manager)
         db_manager.start()
 
         app.config["DB_MANAGER"] = db_manager
