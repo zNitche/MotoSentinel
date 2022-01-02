@@ -2,24 +2,24 @@
 {% block content %}
         {% if settings_config.SETTINGS_PAGE_STRUCT|length > 0 %}
             {% for settings_struct in settings_config.SETTINGS_PAGE_STRUCT %}
-                <div class="settings-container">
-                    <p>
-                        {{ settings_struct[settings_config.SETTINGS_PAGE_STRUCT_TITLE_KEY_NAME] }}
-                    </p>
-                    {% for mode in settings_struct["modes"] %}
-                        <form method="GET" action="{{ url_for('settings.set_time_range', mode=mode) }}" enctype="multipart/form-data">
+                <form class="settings-form" method="GET" action="{{ url_for('settings.apply_settings') }}" enctype="multipart/form-data">
+                    <div class="settings-container">
+                        <p>
+                            {{ settings_struct[settings_config.SETTINGS_PAGE_STRUCT_TITLE_KEY_NAME] }}
+                        </p>
+                        {% for mode in settings_struct["modes"] %}
                             <span>
                                 <p>
                                     {{ mode }}
                                 </p>
                                 <input type="text" id="{{ mode }}"
-                                       name="{{ mode }}"
-                                       placeholder="time range" value="{{ settings_data[mode] }}">
+                                        name="{{ mode }}"
+                                        value="{{ settings_data[mode] }}">
                             </span>
-                            <button class="settings-button" type="submit">Apply</button>
-                        </form>
-                    {% endfor %}
-                </div>
+                        {% endfor %}
+                        <button class="settings-button" type="submit">Apply</button>
+                    </div>
+                </form>
             {% endfor %}
         {% else %}
             <p>

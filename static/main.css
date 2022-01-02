@@ -88,10 +88,10 @@ body {
     background-color: #f59536;
 }
 
-.settings-container form {
+.settings-form {
     display: flex;
-    flex-direction: column;
     text-align: center;
+    width: 100%;
 }
 
 .footer {
