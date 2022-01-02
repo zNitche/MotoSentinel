@@ -10,16 +10,17 @@ def apply_settings():
     requests_dict = request.args.to_dict()
 
     if len(requests_dict.keys()) > 0:
+        settings_data = settings_utils.load_settings()
+
         for settings_mode in requests_dict:
-            settings_data = settings_utils.load_settings()
+            if settings_mode in settings_data.keys():
+                settings_mode_value = requests_dict[settings_mode]
 
-            settings_mode_value = requests_dict[settings_mode]
+                if settings_mode_value.isnumeric():
+                    settings_mode_value = int(settings_mode_value)
 
-            if settings_mode_value.isnumeric():
-                settings_mode_value = int(settings_mode_value)
+                settings_data[settings_mode] = settings_mode_value
 
-            settings_data[settings_mode] = settings_mode_value
-
-            settings_utils.save_settings(settings_data)
+        settings_utils.save_settings(settings_data)
 
     return redirect(url_for("content.settings"))
