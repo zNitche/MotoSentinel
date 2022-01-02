@@ -1,6 +1,7 @@
 from flask import Flask
 import os
 from models import db
+from app_config import AppConfig
 
 
 def create_background_managers(app):
@@ -13,8 +14,8 @@ def create_background_managers(app):
     db_manager = DBManager(app, db, sensors_manager)
     db_manager.start()
 
-    app.config["DB_MANAGER"] = db_manager
-    app.config["SENSORS_MANAGER"] = sensors_manager
+    app.config[AppConfig.DB_MANAGER_CONFIG_KEY_NAME] = db_manager
+    app.config[AppConfig.SENSORS_MANAGER_CONFIG_KEY_NAME] = sensors_manager
 
 
 def create_app():
