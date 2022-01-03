@@ -2,6 +2,7 @@ from flask import Flask
 import os
 from models import db
 from app_config import AppConfig
+from utils import settings_utils
 
 
 def create_background_managers(app):
@@ -24,6 +25,8 @@ def create_app():
     app.secret_key = os.urandom(25)
 
     db.init_app(app)
+
+    settings_utils.init_settings()
 
     with app.app_context():
         db.create_all()
