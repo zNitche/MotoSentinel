@@ -6,6 +6,7 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 from app_config import AppConfig
 from settings_config import SettingsConfig
+from sensors.sensors_config import SensorsConfig
 from utils import settings_utils
 
 
@@ -34,9 +35,9 @@ def generate_acceleration_2d_graphs():
 
     timestamps, x_values, y_values, z_values = get_acceleration_data(settings_data[SettingsConfig.SETTINGS_ACCELERATION_TIME_RANGE_KEY_NAME])
 
-    graphs.append(generate_2d_graph(timestamps, x_values, "x-axis acceleration", "time", "acceleration"))
-    graphs.append(generate_2d_graph(timestamps, y_values, "y-axis acceleration", "time", "acceleration"))
-    graphs.append(generate_2d_graph(timestamps, z_values, "z-axis acceleration", "time", "acceleration"))
+    graphs.append(generate_2d_graph(timestamps, x_values, "x-axis acceleration", "time", f"acceleration ({SensorsConfig.ACCELEROMETER_VALUES_UNIT})"))
+    graphs.append(generate_2d_graph(timestamps, y_values, "y-axis acceleration", "time", f"acceleration ({SensorsConfig.ACCELEROMETER_VALUES_UNIT})"))
+    graphs.append(generate_2d_graph(timestamps, z_values, "z-axis acceleration", "time", f"acceleration ({SensorsConfig.ACCELEROMETER_VALUES_UNIT})"))
 
     encoded_graphs = [encode_graph(graph) for graph in graphs]
 
@@ -68,9 +69,9 @@ def generate_gyro_2d_graphs():
 
     timestamps, x_values, y_values, z_values = get_gyro_data(settings_data[SettingsConfig.SETTINGS_GYRO_TIME_RANGE_KEY_NAME])
 
-    graphs.append(generate_2d_graph(timestamps, x_values, "x-axis gyro", "time", "gyro"))
-    graphs.append(generate_2d_graph(timestamps, y_values, "y-axis gyro", "time", "gyro"))
-    graphs.append(generate_2d_graph(timestamps, z_values, "z-axis gyro", "time", "gyro"))
+    graphs.append(generate_2d_graph(timestamps, x_values, "x-axis gyro", "time", f"gyro ({SensorsConfig.GYRO_VALUES_UNIT})"))
+    graphs.append(generate_2d_graph(timestamps, y_values, "y-axis gyro", "time", f"gyro ({SensorsConfig.GYRO_VALUES_UNIT})"))
+    graphs.append(generate_2d_graph(timestamps, z_values, "z-axis gyro", "time", f"gyro ({SensorsConfig.GYRO_VALUES_UNIT})"))
 
     encoded_graphs = [encode_graph(graph) for graph in graphs]
 
