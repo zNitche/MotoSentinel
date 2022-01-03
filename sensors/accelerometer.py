@@ -10,12 +10,20 @@ class Accelerometer(SensorBase):
     def __init__(self):
         super().__init__()
 
-        self.sensor = adafruit_adxl34x.ADXL345(busio.I2C(board.SCL, board.SDA))
+        self.sensor = None
+        self.init_sensor()
+
         self.name = SensorsConfig.ACCELEROMETER_SENSOR_NAME
 
         self.x_value = 0
         self.y_value = 0
         self.z_value = 0
+
+    def init_sensor(self):
+        try:
+            self.sensor = adafruit_adxl34x.ADXL345(busio.I2C(board.SCL, board.SDA))
+        except Exception as e:
+            logs_utils.log(e)
 
     def update(self):
         try:

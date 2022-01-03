@@ -3,6 +3,9 @@ class SensorBase:
         pass
 
     # Template for child classes
+    def init_sensor(self):
+        pass
+
     def update(self):
         pass
 
