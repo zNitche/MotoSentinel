@@ -26,12 +26,13 @@ class Accelerometer(SensorBase):
             logs_utils.log(e)
 
     def update(self):
-        try:
-            self.x_value = self.sensor.acceleration[0]
-            self.y_value = self.sensor.acceleration[1]
-            self.z_value = self.sensor.acceleration[2]
-        except Exception as e:
-            logs_utils.log(e)
+        if self.sensor is not None:
+            try:
+                self.x_value = self.sensor.acceleration[0]
+                self.y_value = self.sensor.acceleration[1]
+                self.z_value = self.sensor.acceleration[2]
+            except Exception as e:
+                logs_utils.log(e)
 
     def get_sensor_values(self):
         values = [self.x_value, self.y_value, self.z_value]
