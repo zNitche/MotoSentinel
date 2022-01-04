@@ -28,9 +28,9 @@ class Gyro(SensorBase):
     def update(self):
         if self.sensor is not None:
             try:
-                self.x_value = self.sensor.gyro[0]
-                self.y_value = self.sensor.gyro[1]
-                self.z_value = self.sensor.gyro[2]
+                self.x_value = round(self.sensor.gyro[0], 2)
+                self.y_value = round(self.sensor.gyro[1], 2)
+                self.z_value = round(self.sensor.gyro[2], 2)
             except Exception as e:
                 logs_utils.log(e)
 

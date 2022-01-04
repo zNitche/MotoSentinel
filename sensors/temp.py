@@ -27,8 +27,8 @@ class Temp(SensorBase):
     def update(self):
         if self.sensor is not None:
             try:
-                self.temperature = self.sensor.temperature
-                self.humidity = self.sensor.relative_humidity
+                self.temperature = round(self.sensor.temperature, 2)
+                self.humidity = round(self.sensor.relative_humidity, 2)
             except Exception as e:
                 logs_utils.log(e)
 
