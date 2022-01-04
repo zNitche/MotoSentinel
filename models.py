@@ -18,3 +18,10 @@ class Accelerometer(db.Model):
     x_value = db.Column(db.Float, nullable=False)
     y_value = db.Column(db.Float, nullable=False)
     z_value = db.Column(db.Float, nullable=False)
+
+
+class Temp(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    timestamp = db.Column(db.DateTime, nullable=False)
+    temp_value = db.Column(db.Float, nullable=False)
+    humi_value = db.Column(db.Float, nullable=False)

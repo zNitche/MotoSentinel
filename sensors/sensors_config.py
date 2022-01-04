@@ -16,3 +16,11 @@ class SensorsConfig:
     ACCELEROMETER_Z_VALUE_NAME = "z"
 
     ACCELEROMETER_VALUES_UNIT = "m/s^2"
+
+    TEMP_SENSOR_NAME = "temperature sensor"
+
+    TEMP_TEMPERATURE_VALUE_NAME = "temperature"
+    TEMP_HUMIDITY_VALUE_NAME = "humidity"
+
+    TEMP_TEMPERATURE_VALUES_UNIT = "°C"
+    TEMP_HUMIDITY_VALUES_UNIT = "%"

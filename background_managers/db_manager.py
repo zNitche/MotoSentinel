@@ -1,7 +1,7 @@
 import threading
 import time
 from datetime import datetime
-from models import Gyro, Accelerometer
+from models import Gyro, Accelerometer, Temp
 from background_managers.managers_config import ManagersConfig
 from sensors.sensors_config import SensorsConfig
 
@@ -25,6 +25,7 @@ class DBManager:
             with self.app.app_context():
                 self.database.session.add(self.generate_gyro_data())
                 self.database.session.add(self.generate_accelerometer_data())
+                self.database.session.add(self.generate_temp_data())
 
                 self.database.session.commit()
 
@@ -41,7 +42,8 @@ class DBManager:
         return gyro
 
     def generate_accelerometer_data(self):
-        accelerometer_data = self.sensors_manager.get_sensor_parsed_data_by_sensor_name(SensorsConfig.ACCELEROMETER_SENSOR_NAME)
+        accelerometer_data = self.sensors_manager.get_sensor_parsed_data_by_sensor_name(
+            SensorsConfig.ACCELEROMETER_SENSOR_NAME)
 
         accelerometer = Accelerometer(timestamp=datetime.now(),
                                       x_value=accelerometer_data[SensorsConfig.ACCELEROMETER_X_VALUE_NAME],
@@ -49,3 +51,12 @@ class DBManager:
                                       z_value=accelerometer_data[SensorsConfig.ACCELEROMETER_Z_VALUE_NAME])
 
         return accelerometer
+
+    def generate_temp_data(self):
+        temp_data = self.sensors_manager.get_sensor_parsed_data_by_sensor_name(SensorsConfig.TEMP_SENSOR_NAME)
+
+        temp = Temp(timestamp=datetime.now(),
+                    temp_value=temp_data[SensorsConfig.TEMP_TEMPERATURE_VALUE_NAME],
+                    humi_value=temp_data[SensorsConfig.TEMP_HUMIDITY_VALUE_NAME])
+
+        return temp
