@@ -24,7 +24,8 @@ class SettingsConfig:
             SETTINGS_PAGE_STRUCT_TIP_KEY_NAME: "in minutes",
             SETTINGS_PAGE_STRUCT_MODES_KEY_NAME: [
                 SETTINGS_ACCELERATION_TIME_RANGE_KEY_NAME,
-                SETTINGS_GYRO_TIME_RANGE_KEY_NAME
+                SETTINGS_GYRO_TIME_RANGE_KEY_NAME,
+                SETTINGS_TEMP_TIME_RANGE_KEY_NAME
             ]
         }
     ]
