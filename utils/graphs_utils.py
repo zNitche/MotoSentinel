@@ -1,4 +1,4 @@
-from models import Accelerometer, Gyro
+from models import Accelerometer, Gyro, Temp
 import io
 import base64
 from datetime import datetime, timedelta
@@ -72,6 +72,37 @@ def generate_gyro_2d_graphs():
     graphs.append(generate_2d_graph(timestamps, x_values, "x-axis gyro", "time", f"gyro ({SensorsConfig.GYRO_VALUES_UNIT})"))
     graphs.append(generate_2d_graph(timestamps, y_values, "y-axis gyro", "time", f"gyro ({SensorsConfig.GYRO_VALUES_UNIT})"))
     graphs.append(generate_2d_graph(timestamps, z_values, "z-axis gyro", "time", f"gyro ({SensorsConfig.GYRO_VALUES_UNIT})"))
+
+    encoded_graphs = [encode_graph(graph) for graph in graphs]
+
+    return encoded_graphs
+
+
+def get_temp_data(minutes_time_range):
+    temp_data = Temp.query.all()
+
+    timestamps = []
+    temp_values = []
+    humi_values = []
+
+    for data in temp_data:
+        if datetime.now() - timedelta(minutes=minutes_time_range) <= data.timestamp:
+            timestamps.append(data.timestamp)
+            temp_values.append(data.temp_value)
+            humi_values.append(data.humi_value)
+
+    return timestamps, temp_values, humi_values
+
+
+def generate_temp_2d_graphs():
+    graphs = []
+
+    settings_data = settings_utils.load_settings()
+
+    timestamps, temp_values, humi_values = get_temp_data(settings_data[SettingsConfig.SETTINGS_TEMP_TIME_RANGE_KEY_NAME])
+
+    graphs.append(generate_2d_graph(timestamps, temp_values, "temperature", "time", f"temperature ({SensorsConfig.TEMP_TEMPERATURE_VALUES_UNIT})"))
+    graphs.append(generate_2d_graph(timestamps, humi_values, "humidity", "time", f"humidity ({SensorsConfig.TEMP_HUMIDITY_VALUES_UNIT})"))
 
     encoded_graphs = [encode_graph(graph) for graph in graphs]
 
