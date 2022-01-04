@@ -24,3 +24,23 @@ class SensorsConfig:
 
     TEMP_TEMPERATURE_VALUES_UNIT = "°C"
     TEMP_HUMIDITY_VALUES_UNIT = "%"
+
+    # Graphs
+    GRAPH_TIME = "time"
+
+    GRAPH_ACCELERATION = f"acceleration"
+    GRAPH_GYRO = f"gyro"
+
+    GRAPH_TEMPERATURE = "temperature"
+    GRAPH_HUMIDITY = "humidity"
+
+    ACCELEROMETER_X_VALUE = f"x-axis ({ACCELEROMETER_VALUES_UNIT})"
+    ACCELEROMETER_Y_VALUE = f"y-axis ({ACCELEROMETER_VALUES_UNIT})"
+    ACCELEROMETER_Z_VALUE = f"z-axis ({ACCELEROMETER_VALUES_UNIT})"
+
+    GYRO_X_VALUE = f"x-axis ({GYRO_VALUES_UNIT})"
+    GYRO_Y_VALUE = f"y-axis ({GYRO_VALUES_UNIT})"
+    GYRO_Z_VALUE = f"z-axis ({GYRO_VALUES_UNIT})"
+
+    TEMP_TEMPERATURE_VALUE = f"temperature ({TEMP_TEMPERATURE_VALUES_UNIT})"
+    TEMP_HUMIDITY_VALUE = f"humidity ({TEMP_HUMIDITY_VALUES_UNIT})"
