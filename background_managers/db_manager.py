@@ -21,6 +21,9 @@ class DBManager:
             self.process.start()
 
     def mainloop(self):
+        # Sensors warmup
+        time.sleep(ManagersConfig.SENSORS_WARMUP_TIME)
+
         while self.is_running:
 
             sensors_data = [
