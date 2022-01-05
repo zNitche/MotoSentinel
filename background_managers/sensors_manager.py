@@ -25,7 +25,8 @@ class SensorManager:
     def mainloop(self):
         while self.is_running:
             for sensor in self.sensors:
-                sensor.update()
+                if sensor.sensor is not None:
+                    sensor.update()
 
             time.sleep(ManagersConfig.SENSORS_MANAGER_UPDATE_RATE)
 

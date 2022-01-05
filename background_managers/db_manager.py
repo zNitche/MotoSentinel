@@ -22,41 +22,57 @@ class DBManager:
 
     def mainloop(self):
         while self.is_running:
+
+            sensors_data = [
+                self.generate_gyro_data(),
+                self.generate_accelerometer_data(),
+                self.generate_temp_data()
+            ]
+
             with self.app.app_context():
-                self.database.session.add(self.generate_gyro_data())
-                self.database.session.add(self.generate_accelerometer_data())
-                self.database.session.add(self.generate_temp_data())
+                for sensor_data in sensors_data:
+                    if sensor_data is not None:
+                        self.database.session.add(sensor_data)
 
                 self.database.session.commit()
 
             time.sleep(ManagersConfig.DB_MANAGER_UPDATE_RATE)
 
     def generate_gyro_data(self):
-        gyro_data = self.sensors_manager.get_sensor_parsed_data_by_sensor_name(SensorsConfig.GYRO_SENSOR_NAME)
+        gyro = None
 
-        gyro = Gyro(timestamp=datetime.now(),
-                    x_value=gyro_data[SensorsConfig.GYRO_X_VALUE_NAME],
-                    y_value=gyro_data[SensorsConfig.GYRO_Y_VALUE_NAME],
-                    z_value=gyro_data[SensorsConfig.GYRO_Z_VALUE_NAME])
+        if self.sensors_manager.gyro_sensor.sensor is not None:
+            gyro_data = self.sensors_manager.get_sensor_parsed_data_by_sensor_name(SensorsConfig.GYRO_SENSOR_NAME)
+
+            gyro = Gyro(timestamp=datetime.now(),
+                        x_value=gyro_data[SensorsConfig.GYRO_X_VALUE_NAME],
+                        y_value=gyro_data[SensorsConfig.GYRO_Y_VALUE_NAME],
+                        z_value=gyro_data[SensorsConfig.GYRO_Z_VALUE_NAME])
 
         return gyro
 
     def generate_accelerometer_data(self):
-        accelerometer_data = self.sensors_manager.get_sensor_parsed_data_by_sensor_name(
-            SensorsConfig.ACCELEROMETER_SENSOR_NAME)
+        accelerometer = None
 
-        accelerometer = Accelerometer(timestamp=datetime.now(),
-                                      x_value=accelerometer_data[SensorsConfig.ACCELEROMETER_X_VALUE_NAME],
-                                      y_value=accelerometer_data[SensorsConfig.ACCELEROMETER_Y_VALUE_NAME],
-                                      z_value=accelerometer_data[SensorsConfig.ACCELEROMETER_Z_VALUE_NAME])
+        if self.sensors_manager.accelerometer_sensor.sensor is not None:
+            accelerometer_data = self.sensors_manager.get_sensor_parsed_data_by_sensor_name(
+                SensorsConfig.ACCELEROMETER_SENSOR_NAME)
+
+            accelerometer = Accelerometer(timestamp=datetime.now(),
+                                        x_value=accelerometer_data[SensorsConfig.ACCELEROMETER_X_VALUE_NAME],
+                                        y_value=accelerometer_data[SensorsConfig.ACCELEROMETER_Y_VALUE_NAME],
+                                        z_value=accelerometer_data[SensorsConfig.ACCELEROMETER_Z_VALUE_NAME])
 
         return accelerometer
 
     def generate_temp_data(self):
-        temp_data = self.sensors_manager.get_sensor_parsed_data_by_sensor_name(SensorsConfig.TEMP_SENSOR_NAME)
+        temp = None
 
-        temp = Temp(timestamp=datetime.now(),
-                    temp_value=temp_data[SensorsConfig.TEMP_TEMPERATURE_VALUE_NAME],
-                    humi_value=temp_data[SensorsConfig.TEMP_HUMIDITY_VALUE_NAME])
+        if self.sensors_manager.temp_sensor.sensor is not None:
+            temp_data = self.sensors_manager.get_sensor_parsed_data_by_sensor_name(SensorsConfig.TEMP_SENSOR_NAME)
+
+            temp = Temp(timestamp=datetime.now(),
+                        temp_value=temp_data[SensorsConfig.TEMP_TEMPERATURE_VALUE_NAME],
+                        humi_value=temp_data[SensorsConfig.TEMP_HUMIDITY_VALUE_NAME])
 
         return temp
