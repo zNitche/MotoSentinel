@@ -15,17 +15,29 @@ class SettingsConfig:
     }
 
     SETTINGS_PAGE_STRUCT_TITLE_KEY_NAME = "title"
-    SETTINGS_PAGE_STRUCT_MODES_KEY_NAME = "modes"
+    SETTINGS_PAGE_STRUCT_MODES_ITEMS = "modes"
     SETTINGS_PAGE_STRUCT_TIP_KEY_NAME = "tip"
+
+    SETTINGS_ITEM_NAME = "item_name"
+    SETTINGS_ITEM_INPUT_TYPE = "input_type"
 
     SETTINGS_PAGE_STRUCT = [
         {
             SETTINGS_PAGE_STRUCT_TITLE_KEY_NAME: "Time Ranges",
             SETTINGS_PAGE_STRUCT_TIP_KEY_NAME: "in minutes",
-            SETTINGS_PAGE_STRUCT_MODES_KEY_NAME: [
-                SETTINGS_ACCELERATION_TIME_RANGE_KEY_NAME,
-                SETTINGS_GYRO_TIME_RANGE_KEY_NAME,
-                SETTINGS_TEMP_TIME_RANGE_KEY_NAME
+            SETTINGS_PAGE_STRUCT_MODES_ITEMS: [
+                {
+                    SETTINGS_ITEM_NAME: SETTINGS_ACCELERATION_TIME_RANGE_KEY_NAME,
+                    SETTINGS_ITEM_INPUT_TYPE: "text"
+                },
+                {
+                    SETTINGS_ITEM_NAME: SETTINGS_GYRO_TIME_RANGE_KEY_NAME,
+                    SETTINGS_ITEM_INPUT_TYPE: "text"
+                },
+                {
+                    SETTINGS_ITEM_NAME: SETTINGS_TEMP_TIME_RANGE_KEY_NAME,
+                    SETTINGS_ITEM_INPUT_TYPE: "text"
+                }
             ]
         }
     ]
