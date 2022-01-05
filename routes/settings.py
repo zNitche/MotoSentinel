@@ -7,7 +7,7 @@ settings_ = Blueprint("settings", __name__, template_folder='template', static_f
 
 @settings_.route("/settings/apply_settings", methods=["POST"])
 def apply_settings():
-    requests_dict = request.args.to_dict()
+    requests_dict = request.form.to_dict()
 
     if len(requests_dict.keys()) > 0:
         settings_data = settings_utils.load_settings()
