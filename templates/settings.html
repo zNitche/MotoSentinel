@@ -7,7 +7,7 @@
                         <p>
                             {{ settings_struct[settings_config.SETTINGS_PAGE_STRUCT_TITLE_KEY_NAME] }} : ({{ settings_struct[settings_config.SETTINGS_PAGE_STRUCT_TIP_KEY_NAME] }})
                         </p>
-                        {% for mode in settings_struct["modes"] %}
+                        {% for mode in settings_struct[settings_config.SETTINGS_PAGE_STRUCT_MODES_KEY_NAME] %}
                             <span>
                                 <p>
                                     {{ mode }}
