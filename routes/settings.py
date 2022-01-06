@@ -23,8 +23,7 @@ def apply_settings():
                             settings_mode_value = int(settings_mode_value)
 
                     elif settings_mode in SettingsConfig.DATETIME_INPUTS:
-                        settings_mode_value = datetime.strptime(settings_mode_value, "%Y-%m-%dT%H:%M").strftime(
-                            "%m/%d/%Y, %H:%M:%S")
+                        settings_mode_value = datetime.strptime(settings_mode_value, "%Y-%m-%dT%H:%M").strftime("%Y-%m-%dT%H:%M")
 
                     settings_data[settings_mode] = settings_mode_value
 

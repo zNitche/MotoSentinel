@@ -33,8 +33,8 @@ def generate_acceleration_2d_graphs():
 
     settings_data = settings_utils.load_settings()
 
-    begin_time = datetime.strptime(settings_data[SettingsConfig.SETTINGS_ACCELERATION_BEGIN_TIME_RANGE_KEY_NAME], "%m/%d/%Y, %H:%M:%S")
-    end_time = datetime.strptime(settings_data[SettingsConfig.SETTINGS_ACCELERATION_END_TIME_RANGE_KEY_NAME], "%m/%d/%Y, %H:%M:%S")
+    begin_time = datetime.strptime(settings_data[SettingsConfig.SETTINGS_ACCELERATION_BEGIN_TIME_RANGE_KEY_NAME], "%Y-%m-%dT%H:%M")
+    end_time = datetime.strptime(settings_data[SettingsConfig.SETTINGS_ACCELERATION_END_TIME_RANGE_KEY_NAME], "%Y-%m-%dT%H:%M")
 
     timestamps, x_values, y_values, z_values = get_acceleration_data(begin_time, end_time)
 
@@ -70,8 +70,8 @@ def generate_gyro_2d_graphs():
 
     settings_data = settings_utils.load_settings()
 
-    begin_time = datetime.strptime(settings_data[SettingsConfig.SETTINGS_GYRO_BEGIN_TIME_RANGE_KEY_NAME], "%m/%d/%Y, %H:%M:%S")
-    end_time = datetime.strptime(settings_data[SettingsConfig.SETTINGS_GYRO_END_TIME_RANGE_KEY_NAME], "%m/%d/%Y, %H:%M:%S")
+    begin_time = datetime.strptime(settings_data[SettingsConfig.SETTINGS_GYRO_BEGIN_TIME_RANGE_KEY_NAME], "%Y-%m-%dT%H:%M")
+    end_time = datetime.strptime(settings_data[SettingsConfig.SETTINGS_GYRO_END_TIME_RANGE_KEY_NAME], "%Y-%m-%dT%H:%M")
 
     timestamps, x_values, y_values, z_values = get_gyro_data(begin_time, end_time)
 
@@ -105,8 +105,8 @@ def generate_temp_2d_graphs():
 
     settings_data = settings_utils.load_settings()
 
-    begin_time = datetime.strptime(settings_data[SettingsConfig.SETTINGS_TEMP_BEGIN_TIME_RANGE_KEY_NAME], "%m/%d/%Y, %H:%M:%S")
-    end_time = datetime.strptime(settings_data[SettingsConfig.SETTINGS_TEMP_END_TIME_RANGE_KEY_NAME], "%m/%d/%Y, %H:%M:%S")
+    begin_time = datetime.strptime(settings_data[SettingsConfig.SETTINGS_TEMP_BEGIN_TIME_RANGE_KEY_NAME], "%Y-%m-%dT%H:%M")
+    end_time = datetime.strptime(settings_data[SettingsConfig.SETTINGS_TEMP_END_TIME_RANGE_KEY_NAME], "%Y-%m-%dT%H:%M")
 
     timestamps, temp_values, humi_values = get_temp_data(begin_time, end_time)
 

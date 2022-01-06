@@ -3,22 +3,22 @@ from datetime import date, datetime
 
 class SettingsConfig:
     SETTINGS_ACCELERATION_BEGIN_TIME_RANGE_KEY_NAME = "acceleration_begin_time_range"
-    DEFAULT_ACCELERATION_BEGIN_TIME_RANGE = datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
+    DEFAULT_ACCELERATION_BEGIN_TIME_RANGE = datetime.now().strftime("%Y-%m-%dT%H:%M")
 
     SETTINGS_GYRO_BEGIN_TIME_RANGE_KEY_NAME = "gyro_begin_time_range"
-    DEFAULT_GYRO_BEGIN_TIME_RANGE = datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
+    DEFAULT_GYRO_BEGIN_TIME_RANGE = datetime.now().strftime("%Y-%m-%dT%H:%M")
 
     SETTINGS_TEMP_BEGIN_TIME_RANGE_KEY_NAME = "temp_begin_time_range"
-    DEFAULT_TEMP_BEGIN_TIME_RANGE = datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
+    DEFAULT_TEMP_BEGIN_TIME_RANGE = datetime.now().strftime("%Y-%m-%dT%H:%M")
 
     SETTINGS_ACCELERATION_END_TIME_RANGE_KEY_NAME = "acceleration_end_time_range"
-    DEFAULT_ACCELERATION_END_TIME_RANGE = datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
+    DEFAULT_ACCELERATION_END_TIME_RANGE = datetime.now().strftime("%Y-%m-%dT%H:%M")
 
     SETTINGS_GYRO_END_TIME_RANGE_KEY_NAME = "gyro_end_time_range"
-    DEFAULT_GYRO_END_TIME_RANGE = datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
+    DEFAULT_GYRO_END_TIME_RANGE = datetime.now().strftime("%Y-%m-%dT%H:%M")
 
     SETTINGS_TEMP_END_TIME_RANGE_KEY_NAME = "temp_end_time_range"
-    DEFAULT_TEMP_END_TIME_RANGE = datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
+    DEFAULT_TEMP_END_TIME_RANGE = datetime.now().strftime("%Y-%m-%dT%H:%M")
 
     SETTINGS_STRUCT = {
         SETTINGS_ACCELERATION_BEGIN_TIME_RANGE_KEY_NAME: DEFAULT_ACCELERATION_BEGIN_TIME_RANGE,
