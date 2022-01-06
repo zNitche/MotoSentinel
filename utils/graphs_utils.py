@@ -1,7 +1,7 @@
 from models import Accelerometer, Gyro, Temp
 import io
 import base64
-from datetime import datetime, timedelta
+from datetime import datetime
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 from app_config import AppConfig
@@ -10,7 +10,7 @@ from sensors.sensors_config import SensorsConfig
 from utils import settings_utils
 
 
-def get_acceleration_data(minutes_time_range):
+def get_acceleration_data(begin_datetime, end_datetime):
     accelerometer_data = Accelerometer.query.all()
 
     timestamps = []
@@ -19,7 +19,7 @@ def get_acceleration_data(minutes_time_range):
     z_values = []
 
     for data in accelerometer_data:
-        if datetime.now() - timedelta(minutes=minutes_time_range) <= data.timestamp:
+        if begin_datetime <= datetime.now() and datetime.now() <= end_datetime:
             timestamps.append(data.timestamp)
             x_values.append(data.x_value)
             y_values.append(data.y_value)
@@ -33,7 +33,10 @@ def generate_acceleration_2d_graphs():
 
     settings_data = settings_utils.load_settings()
 
-    timestamps, x_values, y_values, z_values = get_acceleration_data(settings_data[SettingsConfig.SETTINGS_ACCELERATION_TIME_RANGE_KEY_NAME])
+    begin_time = datetime.strptime(settings_data[SettingsConfig.SETTINGS_ACCELERATION_BEGIN_TIME_RANGE_KEY_NAME], "%m/%d/%Y, %H:%M:%S")
+    end_time = datetime.strptime(settings_data[SettingsConfig.SETTINGS_ACCELERATION_END_TIME_RANGE_KEY_NAME], "%m/%d/%Y, %H:%M:%S")
+
+    timestamps, x_values, y_values, z_values = get_acceleration_data(begin_time, end_time)
 
     graphs.append(generate_2d_graph(timestamps, x_values, SensorsConfig.GRAPH_ACCELERATION, SensorsConfig.GRAPH_TIME, SensorsConfig.ACCELEROMETER_X_VALUE))
     graphs.append(generate_2d_graph(timestamps, y_values, SensorsConfig.GRAPH_ACCELERATION, SensorsConfig.GRAPH_TIME, SensorsConfig.ACCELEROMETER_Y_VALUE))
@@ -44,7 +47,7 @@ def generate_acceleration_2d_graphs():
     return encoded_graphs
 
 
-def get_gyro_data(minutes_time_range):
+def get_gyro_data(begin_datetime, end_datetime):
     gyro_data = Gyro.query.all()
 
     timestamps = []
@@ -53,7 +56,7 @@ def get_gyro_data(minutes_time_range):
     z_values = []
 
     for data in gyro_data:
-        if datetime.now() - timedelta(minutes=minutes_time_range) <= data.timestamp:
+        if begin_datetime <= datetime.now() and datetime.now() <= end_datetime:
             timestamps.append(data.timestamp)
             x_values.append(data.x_value)
             y_values.append(data.y_value)
@@ -67,7 +70,10 @@ def generate_gyro_2d_graphs():
 
     settings_data = settings_utils.load_settings()
 
-    timestamps, x_values, y_values, z_values = get_gyro_data(settings_data[SettingsConfig.SETTINGS_GYRO_TIME_RANGE_KEY_NAME])
+    begin_time = datetime.strptime(settings_data[SettingsConfig.SETTINGS_GYRO_BEGIN_TIME_RANGE_KEY_NAME], "%m/%d/%Y, %H:%M:%S")
+    end_time = datetime.strptime(settings_data[SettingsConfig.SETTINGS_GYRO_END_TIME_RANGE_KEY_NAME], "%m/%d/%Y, %H:%M:%S")
+
+    timestamps, x_values, y_values, z_values = get_gyro_data(begin_time, end_time)
 
     graphs.append(generate_2d_graph(timestamps, x_values, SensorsConfig.GRAPH_GYRO, SensorsConfig.GRAPH_TIME, SensorsConfig.GYRO_X_VALUE))
     graphs.append(generate_2d_graph(timestamps, y_values, SensorsConfig.GRAPH_GYRO, SensorsConfig.GRAPH_TIME, SensorsConfig.GYRO_Y_VALUE))
@@ -78,7 +84,7 @@ def generate_gyro_2d_graphs():
     return encoded_graphs
 
 
-def get_temp_data(minutes_time_range):
+def get_temp_data(begin_datetime, end_datetime):
     temp_data = Temp.query.all()
 
     timestamps = []
@@ -86,7 +92,7 @@ def get_temp_data(minutes_time_range):
     humi_values = []
 
     for data in temp_data:
-        if datetime.now() - timedelta(minutes=minutes_time_range) <= data.timestamp:
+        if begin_datetime <= datetime.now() and datetime.now() <= end_datetime:
             timestamps.append(data.timestamp)
             temp_values.append(data.temp_value)
             humi_values.append(data.humi_value)
@@ -99,7 +105,10 @@ def generate_temp_2d_graphs():
 
     settings_data = settings_utils.load_settings()
 
-    timestamps, temp_values, humi_values = get_temp_data(settings_data[SettingsConfig.SETTINGS_TEMP_TIME_RANGE_KEY_NAME])
+    begin_time = datetime.strptime(settings_data[SettingsConfig.SETTINGS_TEMP_BEGIN_TIME_RANGE_KEY_NAME], "%m/%d/%Y, %H:%M:%S")
+    end_time = datetime.strptime(settings_data[SettingsConfig.SETTINGS_TEMP_END_TIME_RANGE_KEY_NAME], "%m/%d/%Y, %H:%M:%S")
+
+    timestamps, temp_values, humi_values = get_temp_data(begin_time, end_time)
 
     graphs.append(generate_2d_graph(timestamps, temp_values, SensorsConfig.GRAPH_TEMPERATURE, SensorsConfig.GRAPH_TIME, SensorsConfig.TEMP_TEMPERATURE_VALUE))
     graphs.append(generate_2d_graph(timestamps, humi_values, SensorsConfig.GRAPH_HUMIDITY, SensorsConfig.GRAPH_TIME, SensorsConfig.TEMP_HUMIDITY_VALUE))
