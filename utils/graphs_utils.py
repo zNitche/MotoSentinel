@@ -19,7 +19,7 @@ def get_acceleration_data(begin_datetime, end_datetime):
     z_values = []
 
     for data in accelerometer_data:
-        if begin_datetime <= datetime.now() and datetime.now() <= end_datetime:
+        if begin_datetime <= data.timestamp <= end_datetime:
             timestamps.append(data.timestamp)
             x_values.append(data.x_value)
             y_values.append(data.y_value)
@@ -56,7 +56,7 @@ def get_gyro_data(begin_datetime, end_datetime):
     z_values = []
 
     for data in gyro_data:
-        if begin_datetime <= datetime.now() and datetime.now() <= end_datetime:
+        if begin_datetime <= data.timestamp <= end_datetime:
             timestamps.append(data.timestamp)
             x_values.append(data.x_value)
             y_values.append(data.y_value)
@@ -92,7 +92,7 @@ def get_temp_data(begin_datetime, end_datetime):
     humi_values = []
 
     for data in temp_data:
-        if begin_datetime <= datetime.now() and datetime.now() <= end_datetime:
+        if begin_datetime <= data.timestamp <= end_datetime:
             timestamps.append(data.timestamp)
             temp_values.append(data.temp_value)
             humi_values.append(data.humi_value)
