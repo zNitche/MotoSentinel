@@ -62,11 +62,23 @@ class SettingsConfig:
                     SETTINGS_ITEM_INPUT_TYPE: DATETIME_INPUT_TYPE
                 },
                 {
+                    SETTINGS_ITEM_NAME: SETTINGS_ACCELERATION_END_TIME_RANGE_KEY_NAME,
+                    SETTINGS_ITEM_INPUT_TYPE: DATETIME_INPUT_TYPE
+                },
+                {
                     SETTINGS_ITEM_NAME: SETTINGS_GYRO_BEGIN_TIME_RANGE_KEY_NAME,
                     SETTINGS_ITEM_INPUT_TYPE: DATETIME_INPUT_TYPE
                 },
                 {
+                    SETTINGS_ITEM_NAME: SETTINGS_GYRO_END_TIME_RANGE_KEY_NAME,
+                    SETTINGS_ITEM_INPUT_TYPE: DATETIME_INPUT_TYPE
+                },
+                {
                     SETTINGS_ITEM_NAME: SETTINGS_TEMP_BEGIN_TIME_RANGE_KEY_NAME,
+                    SETTINGS_ITEM_INPUT_TYPE: DATETIME_INPUT_TYPE
+                },
+                {
+                    SETTINGS_ITEM_NAME: SETTINGS_TEMP_END_TIME_RANGE_KEY_NAME,
                     SETTINGS_ITEM_INPUT_TYPE: DATETIME_INPUT_TYPE
                 }
             ]
