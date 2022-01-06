@@ -1,7 +1,6 @@
 from flask import redirect, Blueprint, url_for, request
 from utils import settings_utils
 from settings_config import SettingsConfig
-from datetime import datetime
 
 settings_ = Blueprint("settings", __name__, template_folder='template', static_folder='static')
 
@@ -18,12 +17,8 @@ def apply_settings():
                 settings_mode_value = requests_dict[settings_mode]
 
                 if settings_mode_value:
-                    if settings_mode in SettingsConfig.TEXT_INPUTS:
-                        if settings_mode_value.isnumeric():
-                            settings_mode_value = int(settings_mode_value)
-
-                    elif settings_mode in SettingsConfig.DATETIME_INPUTS:
-                        settings_mode_value = datetime.strptime(settings_mode_value, "%Y-%m-%dT%H:%M").strftime("%Y-%m-%dT%H:%M")
+                    if settings_mode_value.isnumeric():
+                        settings_mode_value = int(settings_mode_value)
 
                     settings_data[settings_mode] = settings_mode_value
 
