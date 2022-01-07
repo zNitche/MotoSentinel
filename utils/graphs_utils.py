@@ -10,6 +10,14 @@ from sensors.sensors_config import SensorsConfig
 from utils import settings_utils
 
 
+def get_datetime_from_settings(settings_key_name):
+    settings_data = settings_utils.load_settings()
+
+    date_time = datetime.strptime(settings_data[settings_key_name], SettingsConfig.TIMEDATE_STR)
+
+    return date_time
+
+
 def get_acceleration_data(begin_datetime, end_datetime):
     accelerometer_data = Accelerometer.query.all()
 
@@ -31,10 +39,8 @@ def get_acceleration_data(begin_datetime, end_datetime):
 def generate_acceleration_2d_graphs():
     graphs = []
 
-    settings_data = settings_utils.load_settings()
-
-    begin_time = datetime.strptime(settings_data[SettingsConfig.SETTINGS_ACCELERATION_BEGIN_TIME_RANGE_KEY_NAME], SettingsConfig.TIMEDATE_STR)
-    end_time = datetime.strptime(settings_data[SettingsConfig.SETTINGS_ACCELERATION_END_TIME_RANGE_KEY_NAME], SettingsConfig.TIMEDATE_STR)
+    begin_time = get_datetime_from_settings(SettingsConfig.SETTINGS_ACCELERATION_BEGIN_TIME_RANGE_KEY_NAME)
+    end_time = get_datetime_from_settings(SettingsConfig.SETTINGS_ACCELERATION_END_TIME_RANGE_KEY_NAME)
 
     timestamps, x_values, y_values, z_values = get_acceleration_data(begin_time, end_time)
 
@@ -68,10 +74,8 @@ def get_gyro_data(begin_datetime, end_datetime):
 def generate_gyro_2d_graphs():
     graphs = []
 
-    settings_data = settings_utils.load_settings()
-
-    begin_time = datetime.strptime(settings_data[SettingsConfig.SETTINGS_GYRO_BEGIN_TIME_RANGE_KEY_NAME], SettingsConfig.TIMEDATE_STR)
-    end_time = datetime.strptime(settings_data[SettingsConfig.SETTINGS_GYRO_END_TIME_RANGE_KEY_NAME], SettingsConfig.TIMEDATE_STR)
+    begin_time = get_datetime_from_settings(SettingsConfig.SETTINGS_GYRO_BEGIN_TIME_RANGE_KEY_NAME)
+    end_time = get_datetime_from_settings(SettingsConfig.SETTINGS_GYRO_END_TIME_RANGE_KEY_NAME)
 
     timestamps, x_values, y_values, z_values = get_gyro_data(begin_time, end_time)
 
@@ -103,10 +107,8 @@ def get_temp_data(begin_datetime, end_datetime):
 def generate_temp_2d_graphs():
     graphs = []
 
-    settings_data = settings_utils.load_settings()
-
-    begin_time = datetime.strptime(settings_data[SettingsConfig.SETTINGS_TEMP_BEGIN_TIME_RANGE_KEY_NAME], SettingsConfig.TIMEDATE_STR)
-    end_time = datetime.strptime(settings_data[SettingsConfig.SETTINGS_TEMP_END_TIME_RANGE_KEY_NAME], SettingsConfig.TIMEDATE_STR)
+    begin_time = get_datetime_from_settings(SettingsConfig.SETTINGS_TEMP_BEGIN_TIME_RANGE_KEY_NAME)
+    end_time = get_datetime_from_settings(SettingsConfig.SETTINGS_TEMP_END_TIME_RANGE_KEY_NAME)
 
     timestamps, temp_values, humi_values = get_temp_data(begin_time, end_time)
 
