@@ -1,6 +1,5 @@
 from flask import redirect, Blueprint, url_for, request
 from utils import settings_utils
-from settings_config import SettingsConfig
 
 settings_ = Blueprint("settings", __name__, template_folder='template', static_folder='static')
 
