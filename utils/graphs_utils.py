@@ -25,9 +25,9 @@ def generate_acceleration_2d_graphs():
 
     timestamps, x_values, y_values, z_values = db_utils.filter_acceleration_data(begin_time, end_time, db_utils.get_acceleration_data())
 
-    graphs.append(generate_2d_graph(timestamps, x_values, SensorsConfig.GRAPH_ACCELERATION, SensorsConfig.GRAPH_TIME, SensorsConfig.ACCELEROMETER_X_VALUE))
-    graphs.append(generate_2d_graph(timestamps, y_values, SensorsConfig.GRAPH_ACCELERATION, SensorsConfig.GRAPH_TIME, SensorsConfig.ACCELEROMETER_Y_VALUE))
-    graphs.append(generate_2d_graph(timestamps, z_values, SensorsConfig.GRAPH_ACCELERATION, SensorsConfig.GRAPH_TIME, SensorsConfig.ACCELEROMETER_Z_VALUE))
+    graphs.append(generate_2d_graph(timestamps, x_values, SensorsConfig.GRAPH_ACCELERATION, SensorsConfig.GRAPH_TIME, SensorsConfig.GRAPH_ACCELEROMETER_X_VALUE))
+    graphs.append(generate_2d_graph(timestamps, y_values, SensorsConfig.GRAPH_ACCELERATION, SensorsConfig.GRAPH_TIME, SensorsConfig.GRAPH_ACCELEROMETER_Y_VALUE))
+    graphs.append(generate_2d_graph(timestamps, z_values, SensorsConfig.GRAPH_ACCELERATION, SensorsConfig.GRAPH_TIME, SensorsConfig.GRAPH_ACCELEROMETER_Z_VALUE))
 
     encoded_graphs = [encode_graph(graph) for graph in graphs]
 
@@ -42,9 +42,9 @@ def generate_gyro_2d_graphs():
 
     timestamps, x_values, y_values, z_values = db_utils.filter_gyro_data(begin_time, end_time, db_utils.get_gyro_data())
 
-    graphs.append(generate_2d_graph(timestamps, x_values, SensorsConfig.GRAPH_GYRO, SensorsConfig.GRAPH_TIME, SensorsConfig.GYRO_X_VALUE))
-    graphs.append(generate_2d_graph(timestamps, y_values, SensorsConfig.GRAPH_GYRO, SensorsConfig.GRAPH_TIME, SensorsConfig.GYRO_Y_VALUE))
-    graphs.append(generate_2d_graph(timestamps, z_values, SensorsConfig.GRAPH_GYRO, SensorsConfig.GRAPH_TIME, SensorsConfig.GYRO_Z_VALUE))
+    graphs.append(generate_2d_graph(timestamps, x_values, SensorsConfig.GRAPH_GYRO, SensorsConfig.GRAPH_TIME, SensorsConfig.GRAPH_GYRO_X_VALUE))
+    graphs.append(generate_2d_graph(timestamps, y_values, SensorsConfig.GRAPH_GYRO, SensorsConfig.GRAPH_TIME, SensorsConfig.GRAPH_GYRO_Y_VALUE))
+    graphs.append(generate_2d_graph(timestamps, z_values, SensorsConfig.GRAPH_GYRO, SensorsConfig.GRAPH_TIME, SensorsConfig.GRAPH_GYRO_Z_VALUE))
 
     encoded_graphs = [encode_graph(graph) for graph in graphs]
 
@@ -59,8 +59,8 @@ def generate_temp_2d_graphs():
 
     timestamps, temp_values, humi_values = db_utils.filter_temp_data(begin_time, end_time, db_utils.get_temp_data())
 
-    graphs.append(generate_2d_graph(timestamps, temp_values, SensorsConfig.GRAPH_TEMPERATURE, SensorsConfig.GRAPH_TIME, SensorsConfig.TEMP_TEMPERATURE_VALUE))
-    graphs.append(generate_2d_graph(timestamps, humi_values, SensorsConfig.GRAPH_HUMIDITY, SensorsConfig.GRAPH_TIME, SensorsConfig.TEMP_HUMIDITY_VALUE))
+    graphs.append(generate_2d_graph(timestamps, temp_values, SensorsConfig.GRAPH_TEMPERATURE, SensorsConfig.GRAPH_TIME, SensorsConfig.GRAPH_TEMP_TEMPERATURE_VALUE))
+    graphs.append(generate_2d_graph(timestamps, humi_values, SensorsConfig.GRAPH_HUMIDITY, SensorsConfig.GRAPH_TIME, SensorsConfig.GRAPH_TEMP_HUMIDITY_VALUE))
 
     encoded_graphs = [encode_graph(graph) for graph in graphs]
 
