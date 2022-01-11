@@ -1,4 +1,4 @@
-from datetime import date, datetime
+from datetime import datetime
 
 
 class SettingsConfig:
@@ -44,7 +44,7 @@ class SettingsConfig:
     SETTINGS_PAGE_STRUCT = [
         {
             SETTINGS_PAGE_STRUCT_TITLE_KEY_NAME: "Time Ranges",
-            SETTINGS_PAGE_STRUCT_TIP_KEY_NAME: "in minutes",
+            SETTINGS_PAGE_STRUCT_TIP_KEY_NAME: "Dates Ranges",
             SETTINGS_PAGE_STRUCT_MODES_ITEMS: [
                 {
                     SETTINGS_ITEM_NAME: SETTINGS_ACCELERATION_BEGIN_TIME_RANGE_KEY_NAME,
