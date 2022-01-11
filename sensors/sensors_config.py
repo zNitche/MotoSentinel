@@ -1,5 +1,6 @@
 class SensorsConfig:
     SENSOR_NAME_KEY = "sensor_name"
+    TIMESTAMP_NAME_KEY = "timestamp"
 
     GYRO_SENSOR_NAME = "gyro"
 
