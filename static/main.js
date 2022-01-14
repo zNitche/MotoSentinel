@@ -32,7 +32,7 @@ function getElementInsideContainerById(containerId, elemId) {
 
 function updateSensorData(sensorName)
 {
-   fetch("/sensors/" + sensorName)
+   fetch("api/sensors/" + sensorName)
   .then(response => response.json())
   .then(data => {
     updateSensorContainer(data, sensorName);
