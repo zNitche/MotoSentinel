@@ -25,9 +25,9 @@ def get_gyro_data():
 
     data = {
         SensorsConfig.TIMESTAMP_NAME_KEY: [],
-        SensorsConfig.ACCELEROMETER_X_VALUE_NAME : [],
-        SensorsConfig.ACCELEROMETER_Y_VALUE_NAME: [],
-        SensorsConfig.ACCELEROMETER_Z_VALUE_NAME: []
+        SensorsConfig.GYRO_X_VALUE_NAME : [],
+        SensorsConfig.GYRO_Y_VALUE_NAME: [],
+        SensorsConfig.GYRO_Z_VALUE_NAME: []
     }
 
     for data_row in gyro_data:
