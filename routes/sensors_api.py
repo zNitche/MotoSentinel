@@ -26,7 +26,7 @@ def sensors_list():
 
 @sensors_.route("/api/sensors_data/<sensor_name>")
 def sensors_db_data(sensor_name):
-    sensor_db_data = {}
+    sensor_db_data = []
 
     if sensor_name == SensorsConfig.ACCELEROMETER_SENSOR_NAME:
         sensor_db_data = db_utils.get_acceleration_data()

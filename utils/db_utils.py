@@ -5,18 +5,17 @@ from sensors.sensors_config import SensorsConfig
 def get_acceleration_data():
     accelerometer_data = Accelerometer.query.all()
 
-    data = {
-        SensorsConfig.TIMESTAMP_NAME_KEY: [],
-        SensorsConfig.ACCELEROMETER_X_VALUE_NAME : [],
-        SensorsConfig.ACCELEROMETER_Y_VALUE_NAME: [],
-        SensorsConfig.ACCELEROMETER_Z_VALUE_NAME: []
-    }
+    data = []
 
     for data_row in accelerometer_data:
-        data[SensorsConfig.TIMESTAMP_NAME_KEY].append(data_row.timestamp)
-        data[SensorsConfig.ACCELEROMETER_X_VALUE_NAME].append(data_row.x_value)
-        data[SensorsConfig.ACCELEROMETER_Y_VALUE_NAME].append(data_row.y_value)
-        data[SensorsConfig.ACCELEROMETER_Z_VALUE_NAME].append(data_row.z_value)
+        row_data = {
+            SensorsConfig.TIMESTAMP_NAME_KEY: data_row.timestamp,
+            SensorsConfig.ACCELEROMETER_X_VALUE_NAME: data_row.x_value,
+            SensorsConfig.ACCELEROMETER_Y_VALUE_NAME: data_row.y_value,
+            SensorsConfig.ACCELEROMETER_Z_VALUE_NAME: data_row.z_value
+        }
+
+        data.append(row_data)
 
     return data
 
@@ -63,13 +62,13 @@ def filter_acceleration_data(begin_datetime, end_datetime, accelerometer_data):
     y_values = []
     z_values = []
 
-    for i, timestamp in enumerate(accelerometer_data[SensorsConfig.TIMESTAMP_NAME_KEY]):
-        if begin_datetime <= timestamp <= end_datetime:
+    for row_data in accelerometer_data:
+        if begin_datetime <= row_data[SensorsConfig.TIMESTAMP_NAME_KEY] <= end_datetime:
 
-            timestamps.append(timestamp)
-            x_values.append(accelerometer_data[SensorsConfig.ACCELEROMETER_X_VALUE_NAME][i])
-            y_values.append(accelerometer_data[SensorsConfig.ACCELEROMETER_Y_VALUE_NAME][i])
-            z_values.append(accelerometer_data[SensorsConfig.ACCELEROMETER_Z_VALUE_NAME][i])
+            timestamps.append(row_data[SensorsConfig.TIMESTAMP_NAME_KEY])
+            x_values.append(row_data[SensorsConfig.ACCELEROMETER_X_VALUE_NAME])
+            y_values.append(row_data[SensorsConfig.ACCELEROMETER_Y_VALUE_NAME])
+            z_values.append(row_data[SensorsConfig.ACCELEROMETER_Z_VALUE_NAME])
 
     return timestamps, x_values, y_values, z_values
 
