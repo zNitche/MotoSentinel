@@ -55,47 +55,11 @@ def get_temp_data():
     return data
 
 
-def filter_acceleration_data(begin_datetime, end_datetime, accelerometer_data):
-    timestamps = []
-    x_values = []
-    y_values = []
-    z_values = []
+def filter_sensor_data(begin_datetime, end_datetime, sensor_data):
+    filtered_data = []
 
-    for row_data in accelerometer_data:
+    for row_data in sensor_data:
         if begin_datetime <= row_data[SensorsConfig.TIMESTAMP_NAME_KEY] <= end_datetime:
-            timestamps.append(row_data[SensorsConfig.TIMESTAMP_NAME_KEY])
-            x_values.append(row_data[SensorsConfig.ACCELEROMETER_X_VALUE_NAME])
-            y_values.append(row_data[SensorsConfig.ACCELEROMETER_Y_VALUE_NAME])
-            z_values.append(row_data[SensorsConfig.ACCELEROMETER_Z_VALUE_NAME])
+            filtered_data.append(row_data)
 
-    return timestamps, x_values, y_values, z_values
-
-
-def filter_gyro_data(begin_datetime, end_datetime, gyro_data):
-    timestamps = []
-    x_values = []
-    y_values = []
-    z_values = []
-
-    for row_data in gyro_data:
-        if begin_datetime <= row_data[SensorsConfig.TIMESTAMP_NAME_KEY] <= end_datetime:
-            timestamps.append(row_data[SensorsConfig.TIMESTAMP_NAME_KEY])
-            x_values.append(row_data[SensorsConfig.GYRO_X_VALUE_NAME])
-            y_values.append(row_data[SensorsConfig.GYRO_Y_VALUE_NAME])
-            z_values.append(row_data[SensorsConfig.GYRO_Z_VALUE_NAME])
-
-    return timestamps, x_values, y_values, z_values
-
-
-def filter_temp_data(begin_datetime, end_datetime, temp_data):
-    timestamps = []
-    temp_values = []
-    humi_values = []
-
-    for row_data in temp_data:
-        if begin_datetime <= row_data[SensorsConfig.TIMESTAMP_NAME_KEY] <= end_datetime:
-            timestamps.append(row_data[SensorsConfig.TIMESTAMP_NAME_KEY])
-            temp_values.append(row_data[SensorsConfig.TEMP_TEMPERATURE_VALUE_NAME])
-            humi_values.append(row_data[SensorsConfig.TEMP_HUMIDITY_VALUE_NAME])
-
-    return timestamps, temp_values, humi_values
+    return filtered_data
