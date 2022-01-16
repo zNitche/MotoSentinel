@@ -43,12 +43,12 @@ class SensorsConfig:
     GRAPH_TEMP_HUMIDITY_VALUE = f"humidity ({TEMP_HUMIDITY_VALUES_UNIT})"
 
     GRAPHS_TITLES = {
-        ACCELEROMETER_X_VALUE_NAME: "x-axis",
-        ACCELEROMETER_Y_VALUE_NAME: "y-axis",
-        ACCELEROMETER_Z_VALUE_NAME: "z-axis",
-        GYRO_X_VALUE_NAME: "x-axis",
-        GYRO_Y_VALUE_NAME: "y-axis",
-        GYRO_Z_VALUE_NAME: "z-axis",
+        ACCELEROMETER_X_VALUE_NAME: f"{GRAPH_ACCELERATION} x-axis",
+        ACCELEROMETER_Y_VALUE_NAME: f"{GRAPH_ACCELERATION} y-axis",
+        ACCELEROMETER_Z_VALUE_NAME: f"{GRAPH_ACCELERATION} z-axis",
+        GYRO_X_VALUE_NAME: f"{GRAPH_GYRO} x-axis",
+        GYRO_Y_VALUE_NAME: f"{GRAPH_GYRO} y-axis",
+        GYRO_Z_VALUE_NAME: f"{GRAPH_GYRO} z-axis",
         TEMP_TEMPERATURE_VALUE_NAME: "temperature",
         TEMP_HUMIDITY_VALUE_NAME: "humidity"
     }
