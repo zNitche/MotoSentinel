@@ -31,7 +31,7 @@ def combine_sensor_data(sensor_data):
     return combined_data
 
 
-def generate_2d_graphs_from_sensor_data(graphs_title, sensor_data):
+def generate_2d_graphs_from_sensor_data(sensor_data):
     graphs = []
 
     combined_sensor_data = combine_sensor_data(sensor_data)
@@ -39,7 +39,7 @@ def generate_2d_graphs_from_sensor_data(graphs_title, sensor_data):
     for data_collection_key in combined_sensor_data:
         if data_collection_key != SensorsConfig.TIMESTAMP_NAME_KEY:
             graphs.append(generate_2d_graph(combined_sensor_data[SensorsConfig.TIMESTAMP_NAME_KEY],
-                                            combined_sensor_data[data_collection_key], graphs_title,
+                                            combined_sensor_data[data_collection_key], SensorsConfig.GRAPHS_TITLES[data_collection_key],
                                             SensorsConfig.GRAPH_TIME,
                                             SensorsConfig.GRAPH_AXIS_TITLES[data_collection_key]))
 
@@ -54,7 +54,7 @@ def generate_acceleration_2d_graphs():
 
     sensor_data = db_utils.filter_sensor_data(begin_time, end_time, db_utils.get_acceleration_data())
 
-    graphs = generate_2d_graphs_from_sensor_data(SensorsConfig.GRAPH_ACCELERATION, sensor_data)
+    graphs = generate_2d_graphs_from_sensor_data(sensor_data)
 
     return graphs
 
@@ -65,7 +65,7 @@ def generate_gyro_2d_graphs():
 
     sensor_data = db_utils.filter_sensor_data(begin_time, end_time, db_utils.get_gyro_data())
 
-    graphs = generate_2d_graphs_from_sensor_data(SensorsConfig.GRAPH_GYRO, sensor_data)
+    graphs = generate_2d_graphs_from_sensor_data(sensor_data)
 
     return graphs
 
@@ -76,7 +76,7 @@ def generate_temp_2d_graphs():
 
     sensor_data = db_utils.filter_sensor_data(begin_time, end_time, db_utils.get_temp_data())
 
-    graphs = generate_2d_graphs_from_sensor_data(SensorsConfig.GRAPH_TEMPERATURE, sensor_data)
+    graphs = generate_2d_graphs_from_sensor_data(sensor_data)
 
     return graphs
 
