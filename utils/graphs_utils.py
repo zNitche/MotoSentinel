@@ -81,6 +81,17 @@ def generate_temp_2d_graphs():
     return graphs
 
 
+def generate_current_2d_graphs():
+    begin_time = get_datetime_from_settings(SettingsConfig.SETTINGS_CURRENT_BEGIN_TIME_RANGE_KEY_NAME)
+    end_time = get_datetime_from_settings(SettingsConfig.SETTINGS_CURRENT_END_TIME_RANGE_KEY_NAME)
+
+    sensor_data = db_utils.filter_sensor_data(begin_time, end_time, db_utils.get_current_data())
+
+    graphs = generate_2d_graphs_from_sensor_data(sensor_data)
+
+    return graphs
+
+
 def generate_2d_graph(x_points, y_points, title, x_title, y_title):
     fig = Figure()
     fig.set_dpi(AppConfig.GRAPH_DPI_RESOLUTION)

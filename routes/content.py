@@ -29,7 +29,8 @@ def graphs():
     acceleration_graphs = graphs_utils.generate_acceleration_2d_graphs()
     gyro_graphs = graphs_utils.generate_gyro_2d_graphs()
     temp_graphs = graphs_utils.generate_temp_2d_graphs()
+    current_graphs = graphs_utils.generate_current_2d_graphs()
 
-    sensors_graphs = [acceleration_graphs, gyro_graphs, temp_graphs]
+    sensors_graphs = [acceleration_graphs, gyro_graphs, temp_graphs, current_graphs]
 
     return render_template("graphs.html", sensors_graphs=sensors_graphs)
