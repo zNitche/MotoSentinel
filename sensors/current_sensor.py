@@ -1,4 +1,3 @@
-# import time
 from packages.DFRobot_INA219 import INA219
 from sensors.sensor_base import SensorBase
 from sensors.sensors_config import SensorsConfig
@@ -20,14 +19,7 @@ class CurrentSensor(SensorBase):
 
     def init_sensor(self):
         try:
-            # ina219_reading_mA = 1000
-            # ext_meter_reading_mA = 1000
-
             self.sensor = INA219(1, INA219.INA219_I2C_ADDRESS4)
-
-            # time.sleep(3)
-
-            # self.sensor.linear_cal(ina219_reading_mA, ext_meter_reading_mA)
 
         except Exception as e:
             logs_utils.log(e)
