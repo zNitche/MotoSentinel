@@ -26,6 +26,16 @@ class SensorsConfig:
     TEMP_TEMPERATURE_VALUES_UNIT = "°C"
     TEMP_HUMIDITY_VALUES_UNIT = "%"
 
+    CURRENT_SENSOR_NAME = "current_sensor"
+
+    CURRENT_VOLTAGE_VALUE_NAME = "voltage"
+    CURRENT_CURRENT_VALUE_NAME = "current"
+    CURRENT_POWER_VALUE_NAME = "power"
+
+    CURRENT_VOLTAGE_VALUE_UNIT = "°V"
+    CURRENT_CURRENT_VALUE_UNIT = "mA"
+    CURRENT_POWER_VALUE_UNIT = "mW"
+
     # Graphs
     GRAPH_TIME = "time"
 

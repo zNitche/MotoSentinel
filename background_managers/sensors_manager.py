@@ -3,6 +3,7 @@ import time
 from sensors.gyro import Gyro
 from sensors.accelerometer import Accelerometer
 from sensors.temp import Temp
+from sensors.current_sensor import CurrentSensor
 from background_managers.managers_config import ManagersConfig
 
 
@@ -14,8 +15,9 @@ class SensorManager:
         self.gyro_sensor = Gyro()
         self.accelerometer_sensor = Accelerometer()
         self.temp_sensor = Temp()
+        self.current_sensor = CurrentSensor()
 
-        self.sensors = [self.gyro_sensor, self.accelerometer_sensor, self.temp_sensor]
+        self.sensors = [self.gyro_sensor, self.accelerometer_sensor, self.temp_sensor, self.current_sensor]
 
     def start(self):
         if not self.is_running:
