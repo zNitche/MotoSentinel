@@ -1,7 +1,7 @@
 import threading
 import time
 from datetime import datetime
-from models import Gyro, Accelerometer, Temp
+from models import Gyro, Accelerometer, Temp, Current
 from background_managers.managers_config import ManagersConfig
 from sensors.sensors_config import SensorsConfig
 
@@ -29,7 +29,8 @@ class DBManager:
             sensors_data = [
                 self.generate_gyro_data(),
                 self.generate_accelerometer_data(),
-                self.generate_temp_data()
+                self.generate_temp_data(),
+                self.generate_current_data()
             ]
 
             with self.app.app_context():
@@ -79,3 +80,16 @@ class DBManager:
                         humi_value=temp_data[SensorsConfig.TEMP_HUMIDITY_VALUE_NAME])
 
         return temp
+
+    def generate_current_data(self):
+        current = None
+
+        if self.sensors_manager.current_sensor.sensor is not None:
+            current_data = self.sensors_manager.get_sensor_parsed_data_by_sensor_name(SensorsConfig.CURRENT_SENSOR_NAME)
+
+            current = Current(timestamp=datetime.now(),
+                        voltage=current_data[SensorsConfig.CURRENT_VOLTAGE_VALUE_NAME],
+                        current=current_data[SensorsConfig.CURRENT_CURRENT_VALUE_NAME],
+                        power=current_data[SensorsConfig.CURRENT_POWER_VALUE_NAME])
+
+        return current

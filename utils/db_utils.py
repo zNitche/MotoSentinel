@@ -1,4 +1,4 @@
-from models import Accelerometer, Gyro, Temp
+from models import Accelerometer, Gyro, Temp, Current
 from sensors.sensors_config import SensorsConfig
 
 
@@ -48,6 +48,24 @@ def get_temp_data():
             SensorsConfig.TIMESTAMP_NAME_KEY: data_row.timestamp,
             SensorsConfig.TEMP_TEMPERATURE_VALUE_NAME: data_row.temp_value,
             SensorsConfig.TEMP_HUMIDITY_VALUE_NAME: data_row.humi_value
+        }
+
+        data.append(row_data)
+
+    return data
+
+
+def get_current_data():
+    current_data = Current.query.all()
+
+    data = []
+
+    for data_row in current_data:
+        row_data = {
+            SensorsConfig.TIMESTAMP_NAME_KEY: data_row.timestamp,
+            SensorsConfig.CURRENT_VOLTAGE_VALUE_NAME: data_row.voltage,
+            SensorsConfig.CURRENT_CURRENT_VALUE_NAME: data_row.current,
+            SensorsConfig.CURRENT_POWER_VALUE_NAME: data_row.power
         }
 
         data.append(row_data)
