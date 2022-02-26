@@ -5,7 +5,7 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 from app_config import AppConfig
 from settings_config import SettingsConfig
-from sensors.sensors_config import SensorsConfig
+from sensors.sensors_config import SensorsConfig, GraphsConfig
 from utils import settings_utils, db_utils
 
 
@@ -39,9 +39,9 @@ def generate_2d_graphs_from_sensor_data(sensor_data):
     for data_collection_key in combined_sensor_data:
         if data_collection_key != SensorsConfig.TIMESTAMP_NAME_KEY:
             graphs.append(generate_2d_graph(combined_sensor_data[SensorsConfig.TIMESTAMP_NAME_KEY],
-                                            combined_sensor_data[data_collection_key], SensorsConfig.GRAPHS_TITLES[data_collection_key],
-                                            SensorsConfig.GRAPH_TIME,
-                                            SensorsConfig.GRAPH_AXIS_TITLES[data_collection_key]))
+                                            combined_sensor_data[data_collection_key], GraphsConfig.GRAPHS_TITLES[data_collection_key],
+                                            GraphsConfig.GRAPH_TIME,
+                                            GraphsConfig.GRAPH_AXIS_TITLES[data_collection_key]))
 
     encoded_graphs = [encode_graph(graph) for graph in graphs]
 
