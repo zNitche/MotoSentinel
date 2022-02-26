@@ -2,11 +2,17 @@
 {% block content %}
         {% for sensor_graphs in sensors_graphs %}
             <div class="graph-container">
-                {% for graph in sensor_graphs %}
-                    <p>
-                        <img class="graph-img" src="{{ graph }}">
-                    </p>
-                {% endfor %}
+                {% if sensor_graphs|length > 0 %}
+                    {% for graph in sensor_graphs %}
+                        <p>
+                            <img class="graph-img" src="{{ graph }}">
+                        </p>
+                    {% endfor %}
+
+                {% else %}
+                    <p>Nothing to show</p>
+
+                {% endif %}
             </div>
         {% endfor %}
 {% endblock %}
