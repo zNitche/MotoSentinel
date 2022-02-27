@@ -7,3 +7,4 @@ smbus==1.1.post2
 adafruit-circuitpython-adxl34x==1.11.9
 adafruit-circuitpython-l3gd20==2.3.7
 adafruit-circuitpython-ahtx0==1.0.8
+gunicorn==20.1.0
