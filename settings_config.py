@@ -39,6 +39,17 @@ class SettingsConfig:
         SETTINGS_CURRENT_END_TIME_RANGE_KEY_NAME: DEFAULT_CURRENT_END_TIME_RANGE
     }
 
+    SETTINGS_NAMES = {
+        SETTINGS_ACCELERATION_BEGIN_TIME_RANGE_KEY_NAME: "Acceleration begin time range",
+        SETTINGS_GYRO_BEGIN_TIME_RANGE_KEY_NAME: "Gyro begin time range",
+        SETTINGS_TEMP_BEGIN_TIME_RANGE_KEY_NAME: "Temp begin time range",
+        SETTINGS_ACCELERATION_END_TIME_RANGE_KEY_NAME: "Acceleration end time range",
+        SETTINGS_GYRO_END_TIME_RANGE_KEY_NAME: "Gyro end time range",
+        SETTINGS_TEMP_END_TIME_RANGE_KEY_NAME: "Temp end time range",
+        SETTINGS_CURRENT_BEGIN_TIME_RANGE_KEY_NAME: "Current begin time range",
+        SETTINGS_CURRENT_END_TIME_RANGE_KEY_NAME: "Current end time range"
+    }
+
     SETTINGS_PAGE_STRUCT_TITLE_KEY_NAME = "title"
     SETTINGS_PAGE_STRUCT_MODES_ITEMS = "modes"
     SETTINGS_PAGE_STRUCT_TIP_KEY_NAME = "tip"

@@ -10,7 +10,7 @@
                         {% for mode_item in settings_struct[settings_config.SETTINGS_PAGE_STRUCT_MODES_ITEMS] %}
                             <span>
                                 <p>
-                                    {{  mode_item[settings_config.SETTINGS_ITEM_NAME] }}
+                                    {{  settings_config.SETTINGS_NAMES[mode_item[settings_config.SETTINGS_ITEM_NAME]] }}
                                 </p>
                                 <input type="{{ mode_item[settings_config.SETTINGS_ITEM_INPUT_TYPE] }}" id="{{ mode_item[settings_config.SETTINGS_ITEM_NAME] }}"
                                         name="{{ mode_item[settings_config.SETTINGS_ITEM_NAME] }}"
