@@ -4,6 +4,16 @@ Raspberry Pi powered sensors rig for generating ride statistics (cars / bikes)
 
 ---
 
+### Parts
+- 1x Raspberry Pi 3 / 4 / Zero.
+- 1x I2C hub splitter.
+- 1x DFRobot I2C Current Sensor.
+- 1x ADXL345 accelerometer.
+- 1x L3GD20 gyro.
+- 1x AHTx0 temperature and humidity sensor.
+
+### Setup
+
 1. Setup Docker container:
    1. Build image: 
    ```
