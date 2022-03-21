@@ -7,9 +7,6 @@ class AppConfig:
     APP_HOST = "0.0.0.0"
     DEBUG_MODE = False
 
-    SENSORS_MANAGER_CONFIG_KEY_NAME = "SENSORS_MANAGER"
-    DB_MANAGER_CONFIG_KEY_NAME = "DB_MANAGER"
-
     DATA_PATH = "data"
 
     SQLALCHEMY_DATABASE_URI = f"sqlite:///{DATA_PATH}/database.db"
