@@ -1,10 +1,11 @@
 from flask import redirect, Blueprint, url_for, request
 from utils import settings_utils
 
-settings_ = Blueprint("settings", __name__, template_folder='template', static_folder='static')
+
+settings = Blueprint("settings", __name__, template_folder='template', static_folder='static')
 
 
-@settings_.route("/settings/apply_settings", methods=["POST"])
+@settings.route("/settings/apply_settings", methods=["POST"])
 def apply_settings():
     requests_dict = request.form.to_dict()
 

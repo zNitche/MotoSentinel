@@ -2,10 +2,10 @@ from flask import Blueprint, jsonify, current_app
 from utils import db_utils
 from sensors.sensors_config import SensorsConfig
 
-sensors_ = Blueprint("sensors", __name__, template_folder='template', static_folder='static')
+sensors = Blueprint("sensors", __name__, template_folder='template', static_folder='static')
 
 
-@sensors_.route("/api/sensors/<sensor_name>")
+@sensors.route("/api/sensors/<sensor_name>")
 def sensor_data(sensor_name):
     sensors_manager = current_app.sensors_manager
 
@@ -14,7 +14,7 @@ def sensor_data(sensor_name):
     return jsonify(data)
 
 
-@sensors_.route("/api/sensors")
+@sensors.route("/api/sensors")
 def sensors_list():
     sensors_manager = current_app.sensors_manager
 
@@ -23,7 +23,7 @@ def sensors_list():
     return jsonify(sensors)
 
 
-@sensors_.route("/api/sensors_data/<sensor_name>")
+@sensors.route("/api/sensors_data/<sensor_name>")
 def sensors_db_data(sensor_name):
     sensor_db_data = []
 

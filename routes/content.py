@@ -4,10 +4,10 @@ from utils import graphs_utils, settings_utils
 from settings_config import SettingsConfig
 
 
-content_ = Blueprint("content", __name__, template_folder='template', static_folder='static')
+content = Blueprint("content", __name__, template_folder='template', static_folder='static')
 
 
-@content_.route("/")
+@content.route("/")
 def home():
     sensors_manager = current_app.sensors_manager
 
@@ -16,14 +16,14 @@ def home():
     return render_template("index.html", sensors_data=sensors_data, sensors_config=SensorsConfig)
 
 
-@content_.route("/settings")
+@content.route("/settings")
 def settings():
     settings_data = settings_utils.load_settings()
 
     return render_template("settings.html", settings_data=settings_data, settings_config=SettingsConfig)
 
 
-@content_.route("/graphs")
+@content.route("/graphs")
 def graphs():
     acceleration_graphs = graphs_utils.generate_acceleration_2d_graphs()
     gyro_graphs = graphs_utils.generate_gyro_2d_graphs()

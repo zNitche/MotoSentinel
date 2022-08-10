@@ -34,9 +34,9 @@ def create_app():
 
         from routes import content, errors, sensors_api, settings
 
-        app.register_blueprint(content.content_)
-        app.register_blueprint(errors.errors_)
-        app.register_blueprint(sensors_api.sensors_)
-        app.register_blueprint(settings.settings_)
+        app.register_blueprint(content.content)
+        app.register_blueprint(errors.errors)
+        app.register_blueprint(sensors_api.sensors)
+        app.register_blueprint(settings.settings)
 
         return app
